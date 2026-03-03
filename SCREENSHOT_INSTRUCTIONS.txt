@@ -1,0 +1,25 @@
+SCREENSHOT.PNG INSTRUCTIONS
+============================
+
+WordPress.org requires a screenshot.png at exactly 1200x900px (displayed at 880x660).
+
+A placeholder screenshot.png has been included in this theme package.
+
+To replace it with a real screenshot:
+
+1. Activate the theme on a WordPress site with some test content.
+2. Open the front page in a browser at 1200px wide.
+3. Take a screenshot and crop to exactly 1200x900 pixels.
+4. Save as screenshot.png in the theme root directory.
+5. The image will be displayed at 880x660 in the WordPress theme browser.
+
+The screenshot should show:
+- The homepage layout with Hero section
+- The primary navigation header
+- At least one post grid section
+- The footer
+
+Recommended tools:
+- Browser DevTools → Screenshot
+- Figma / Sketch (for mockup)
+- Chrome / Firefox full-page screenshot extensions
