@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PressGrid — WordPress Theme Documentation</title>
+<meta name="description" content="Full documentation for PressGrid — a high-performance, security-hardened WordPress theme for news and magazine websites." />
+<meta property="og:title" content="PressGrid WordPress Theme Documentation" />
+<meta property="og:description" content="Layout Builder, Ads, Customizer, 95+ Lighthouse. GPL licensed." />
+<meta name="theme-color" content="#0b0d12" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0d12;--bg2:#111420;--bg3:#181c2a;--surface:#1e2333;
+  --border:rgba(255,255,255,.07);--accent:#4f8ef7;--accent2:#f7654f;--accent3:#4ff7c8;
+  --text:#e8eaf0;--text2:#9499b0;--text3:#5c6280;
+  --font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;
+  --radius:10px;--nav-w:272px;--ease:.2s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color var(--ease)}
+a:hover{color:#7faaff}
+img{max-width:100%;height:auto;display:block}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+.blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.b1{width:600px;height:600px;background:rgba(79,142,247,.07);top:-200px;right:-100px}
+.b2{width:400px;height:400px;background:rgba(79,247,200,.05);bottom:100px;left:-100px}
+.layout{display:grid;grid-template-columns:var(--nav-w) 1fr;min-height:100vh;position:relative;z-index:1}
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:var(--surface) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--surface);border-radius:4px}
+.sb-logo{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border)}
+.logo-mark{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-weight:800;font-size:1.2rem;color:var(--text)}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#0b0d12;font-family:var(--font-head);flex-shrink:0}
+.sb-ver{margin-top:.4rem;font-size:.72rem;color:var(--text3);font-family:var(--font-mono)}
+.nav-sec{padding:1.1rem 1rem .4rem}
+.nav-lbl{font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);padding:0 .5rem .4rem}
+.nav-items{list-style:none}
+.nav-items li a{display:flex;align-items:center;gap:.6rem;padding:.42rem .75rem;border-radius:6px;font-size:.855rem;color:var(--text2);transition:all var(--ease);border:1px solid transparent}
+.nav-items li a:hover{background:var(--surface);color:var(--text);border-color:var(--border)}
+.nav-items li a.active{background:rgba(79,142,247,.12);color:var(--accent);border-color:rgba(79,142,247,.25)}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--text3);flex-shrink:0;transition:background var(--ease)}
+.nav-items li a.active .ndot,.nav-items li a:hover .ndot{background:var(--accent)}
+.sb-foot{margin-top:auto;padding:1rem 1.5rem;border-top:1px solid var(--border);font-size:.74rem;color:var(--text3)}
+.sb-foot a{color:var(--text2)}
+.mob-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:200;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.45rem .65rem;border-radius:8px;cursor:pointer;font-size:1.05rem;backdrop-filter:blur(8px)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99;backdrop-filter:blur(2px)}
+.overlay.open{display:block}
+.content{padding:3.5rem 2.75rem 6rem;max-width:900px}
+.hero{padding-bottom:3.5rem;border-bottom:1px solid var(--border);margin-bottom:3.5rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(79,247,200,.08);border:1px solid rgba(79,247,200,.2);color:var(--accent3);font-size:.73rem;font-weight:500;padding:.28rem .8rem;border-radius:100px;margin-bottom:1.5rem;font-family:var(--font-mono)}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.75rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.1rem;background:linear-gradient(135deg,#fff 0%,#8b90aa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--text2);max-width:580px;line-height:1.65;margin-bottom:1.75rem;font-weight:300}
+.tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:2.25rem}
+.tag{font-size:.7rem;font-family:var(--font-mono);padding:.18rem .6rem;border-radius:4px;font-weight:500}
+.tb{background:rgba(79,142,247,.14);color:#7faaff;border:1px solid rgba(79,142,247,.25)}
+.tg{background:rgba(79,247,200,.1);color:#4ff7c8;border:1px solid rgba(79,247,200,.2)}
+.tr{background:rgba(247,101,79,.12);color:#f9987f;border:1px solid rgba(247,101,79,.2)}
+.tx{background:rgba(255,255,255,.05);color:var(--text2);border:1px solid var(--border)}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.35rem;border-radius:8px;font-weight:600;font-size:.875rem;font-family:var(--font-body);transition:all var(--ease);cursor:pointer;text-decoration:none}
+.btn-p{background:var(--accent);color:#0b0d12}
+.btn-p:hover{background:#7faaff;color:#0b0d12;transform:translateY(-1px);box-shadow:0 8px 24px rgba(79,142,247,.3)}
+.btn-g{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn-g:hover{background:var(--bg3);border-color:rgba(255,255,255,.15);transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:3.5rem}
+.stat{background:var(--bg2);padding:1.2rem 1rem;text-align:center}
+.sv{font-family:var(--font-head);font-size:1.7rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.2rem}
+.sv span{color:var(--accent)}
+.sl{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.sec{margin-bottom:3.75rem;scroll-margin-top:2rem}
+.eyebrow{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.55rem;opacity:.8}
+.sec h2{font-family:var(--font-head);font-size:1.7rem;font-weight:800;letter-spacing:-.025em;margin-bottom:.9rem;color:var(--text)}
+.sec h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin:1.75rem 0 .65rem;color:var(--text);display:flex;align-items:center;gap:.55rem}
+.sec h3::before{content:'';display:inline-block;width:3px;height:1.05em;background:var(--accent);border-radius:2px;flex-shrink:0}
+.sec p{color:var(--text2);margin-bottom:.9rem;font-size:.935rem}
+.sec ul,.sec ol{color:var(--text2);padding-left:1.35rem;margin-bottom:.9rem;font-size:.935rem}
+.sec li{margin-bottom:.3rem}
+.sec li strong{color:var(--text)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;margin:1.25rem 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.15rem;transition:all var(--ease);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent3));opacity:0;transition:opacity var(--ease)}
+.card:hover{border-color:rgba(79,142,247,.3);transform:translateY(-2px)}
+.card:hover::before{opacity:1}
+.ci{font-size:1.4rem;margin-bottom:.65rem}
+.ct{font-family:var(--font-head);font-weight:700;font-size:.92rem;margin-bottom:.35rem;color:var(--text)}
+.cd{font-size:.78rem;color:var(--text3);line-height:1.5}
+pre,code{font-family:var(--font-mono);font-size:.82rem}
+code:not(pre code){background:rgba(79,142,247,.1);color:#7faaff;padding:.1em .35em;border-radius:4px;font-size:.82em}
+pre{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;overflow-x:auto;margin:1.1rem 0;color:var(--text2);line-height:1.6;position:relative}
+pre .cm{color:var(--text3);font-style:italic}
+pre .kw{color:#f7654f}
+pre .fn{color:var(--accent)}
+pre .str{color:var(--accent3)}
+pre .num{color:#f7c94f}
+pre .var{color:#e8eaf0}
+.ftree{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;font-family:var(--font-mono);font-size:.8rem;margin:1.1rem 0;line-height:2}
+.ftree .d{color:var(--accent)}
+.ftree .f{color:var(--text2)}
+.ftree .n{color:var(--text3);font-style:italic;font-size:.73rem}
+.note{border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.1rem 0;font-size:.875rem;display:flex;gap:.7rem;align-items:flex-start;border-width:1px;border-style:solid}
+.ni{font-size:.95rem;flex-shrink:0;margin-top:.1rem}
+.nb{background:rgba(79,142,247,.07);border-color:rgba(79,142,247,.2);color:#a8c4ff}
+.ng{background:rgba(79,247,200,.07);border-color:rgba(79,247,200,.2);color:#8ff5dc}
+.nr{background:rgba(247,101,79,.08);border-color:rgba(247,101,79,.2);color:#f9b8a8}
+.note strong{display:block;margin-bottom:.15rem}
+.steps{list-style:none;padding:0;margin:1.1rem 0}
+.steps li{display:flex;gap:.9rem;padding-bottom:1.4rem;position:relative}
+.steps li:not(:last-child)::after{content:'';position:absolute;left:13px;top:28px;bottom:0;width:1px;background:var(--border)}
+.sn{width:26px;height:26px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--accent);flex-shrink:0;font-family:var(--font-mono);position:relative;z-index:1}
+.sc{flex:1}
+.sc strong{display:block;color:var(--text);font-size:.88rem;margin-bottom:.2rem}
+.sc span{font-size:.83rem;color:var(--text2)}
+table{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.84rem}
+th{text-align:left;padding:.55rem .9rem;border-bottom:1px solid var(--border);color:var(--text3);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:500;background:var(--bg3)}
+td{padding:.65rem .9rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2);vertical-align:top}
+tr:hover td{background:rgba(255,255,255,.015)}
+td:first-child{color:var(--text);font-weight:500}
+.cl{list-style:none;padding:0;margin:.9rem 0}
+.cl li{display:flex;align-items:flex-start;gap:.55rem;padding:.35rem 0;font-size:.87rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.ck{color:var(--accent3);font-size:.82rem;flex-shrink:0;margin-top:.15rem}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin:1.4rem 0}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.15rem;text-align:center}
+.ps{font-family:var(--font-head);font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:.25rem}
+.ps.green{color:#4ff7c8}
+.ps.blue{color:var(--accent)}
+.pl{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em}
+.psub{font-size:.78rem;color:var(--text2);margin-top:.35rem}
+hr{border:none;border-top:1px solid var(--border);margin:2.75rem 0}
+.bktop{position:fixed;bottom:2rem;right:2rem;width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2);cursor:pointer;opacity:0;pointer-events:none;transition:all var(--ease);z-index:50;font-size:.82rem}
+.bktop.v{opacity:1;pointer-events:all}
+.bktop:hover{background:var(--accent);color:#0b0d12;border-color:var(--accent)}
+@media(max-width:920px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:fixed;top:0;left:0;width:var(--nav-w);height:100vh;z-index:100;transform:translateX(-100%);transition:transform var(--ease)}
+  .sidebar.open{transform:translateX(0);box-shadow:0 0 60px rgba(0,0,0,.5)}
+  .mob-toggle{display:block}
+  .content{padding:4rem 1.2rem 4rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .cgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .cgrid{grid-template-columns:1fr}
+  .btns{flex-direction:column}
+  .btn{justify-content:center}
+}
+@media print{
+  .sidebar,.mob-toggle,.bktop,.b1,.b2{display:none!important}
+  .layout{display:block}
+  .content{padding:1rem;max-width:100%}
+  body{color:#000;background:#fff}
+}
+</style>
+</head>
+<body>
+<div class="b1 blob"></div>
+<div class="b2 blob"></div>
+<div class="overlay" id="ov"></div>
+<button class="mob-toggle" id="mt" aria-label="Toggle navigation">&#9776;</button>
+<div class="layout">
+<nav class="sidebar" id="sb" aria-label="Documentation navigation">
+  <div class="sb-logo">
+    <a class="logo-mark" href="#top">
+      <span class="logo-icon">PG</span>PressGrid
+    </a>
+    <p class="sb-ver">v1.0.0 &nbsp;&middot;&nbsp; GPL-2.0+</p>
+  </div>
+  <div class="nav-sec">
+    <p class="nav-lbl">Getting Started</p>
+    <ul class="nav-items">
+      <li><a href="#overview" class="active"><span class="ndot"></span>Overview</a></li>
+      <li><a href="#requirements"><span class="ndot"></span>Requirements</a></li>
+      <li><a href="#installation"><span class="ndot"></span>Installation</a></li>
+      <li><a href="#file-structure"><span class="ndot"></span>File Structure</a></li>
+    </ul>
+  </div>
+  <div class="nav-sec">
+    <p class="nav-lbl">Configuration</p>
+    <ul class="nav-items">
+      <li><a href="#customizer"><span class="ndot"></span>Customizer</a></li>
+      <li><a href="#layout-builder"><span class="ndot"></span>Layout Builder</a></li>
+      <li><a href="#ads"><span class="ndot"></span>Ad Zones</a></li>
+      <li><a href="#typography"><span class="ndot"></span>Typography</a></li>
+      <li><a href="#menus"><span class="ndot"></span>Menus &amp; Widgets</a></li>
+    </ul>
+  </div>
+  <div class="nav-sec">
+    <p class="nav-lbl">Technical</p>
+    <ul class="nav-items">
+      <li><a href="#performance"><span class="ndot"></span>Performance</a></li>
+      <li><a href="#security"><span class="ndot"></span>Security</a></li>
+      <li><a href="#seo"><span class="ndot"></span>SEO &amp; Schema</a></li>
+      <li><a href="#hooks"><span class="ndot"></span>Hooks &amp; Filters</a></li>
+      <li><a href="#translation"><span class="ndot"></span>Translation</a></li>
+    </ul>
+  </div>
+  <div class="nav-sec">
+    <p class="nav-lbl">Reference</p>
+    <ul class="nav-items">
+      <li><a href="#template-parts"><span class="ndot"></span>Template Parts</a></li>
+      <li><a href="#caching"><span class="ndot"></span>Caching</a></li>
+      <li><a href="#changelog"><span class="ndot"></span>Changelog</a></li>
+    </ul>
+  </div>
+  <div class="sb-foot">
+    <p>By <a href="https://stanchev.bg/" target="_blank" rel="noopener noreferrer">Milen Stanchev</a></p>
+    <p style="margin-top:.25rem">GPL-2.0-or-later</p>
+  </div>
+</nav>
+<main class="content" id="top">
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <span class="badge">&#10022; WordPress Theme &nbsp;&middot;&nbsp; v1.0.0</span>
+  <h1>PressGrid</h1>
+  <p class="hero-sub">A production-ready, security-hardened WordPress theme engineered for high-traffic news and magazine websites. Modular layout system, zero JS dependencies, and enterprise-grade security.</p>
+  <div class="tags">
+    <span class="tag tb">WordPress 6.3+</span><span class="tag tb">PHP 8.0+</span>
+    <span class="tag tg">Lighthouse 95+</span><span class="tag tg">GPL-2.0+</span>
+    <span class="tag tr">Vanilla JS</span><span class="tag tx">No jQuery</span>
+    <span class="tag tx">No Bootstrap</span><span class="tag tx">WCAG 2.1 AA</span>
+  </div>
+  <div class="btns">
+    <a href="https://github.com/milenstanchev/pressgrid" class="btn btn-p" target="_blank" rel="noopener noreferrer">&#8659; Download Theme</a>
+    <a href="https://github.com/milenstanchev/pressgrid" class="btn btn-g" target="_blank" rel="noopener noreferrer">&#9733; GitHub Repository</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sv"><span>95</span>+</div><div class="sl">Lighthouse</div></div>
+  <div class="stat"><div class="sv">8</div><div class="sl">Layout Sections</div></div>
+  <div class="stat"><div class="sv">6</div><div class="sl">Ad Zones</div></div>
+  <div class="stat"><div class="sv"><span>0</span></div><div class="sl">JS Deps</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec">
+  <div class="eyebrow">Core Features</div>
+  <h2>What's Included</h2>
+  <p>PressGrid combines editorial design with engineering discipline. Every feature is purposefully built for modern news operations.</p>
+  <div class="cgrid">
+    <div class="card"><div class="ci">&#9889;</div><div class="ct">Performance First</div><div class="cd">Transient caching, deferred JS, lazy images, zero render-blocking resources.</div></div>
+    <div class="card"><div class="ci">&#128274;</div><div class="ct">Security Hardened</div><div class="cd">Nonces, capability checks, MIME validation, security headers, full output escaping.</div></div>
+    <div class="card"><div class="ci">&#127959;</div><div class="ct">Layout Builder</div><div class="cd">8 configurable homepage sections with enable/disable, layout, and category controls.</div></div>
+    <div class="card"><div class="ci">&#128226;</div><div class="ct">Ad System</div><div class="cd">6 zones with mobile/desktop visibility, async loading, and wp_kses sanitization.</div></div>
+    <div class="card"><div class="ci">&#127912;</div><div class="ct">CSS Variables</div><div class="cd">Full Customizer-driven theming via :root CSS custom properties with live preview.</div></div>
+    <div class="card"><div class="ci">&#127757;</div><div class="ct">Translation Ready</div><div class="cd">Fully translatable with text domain <code>pressgrid</code> and .pot template included.</div></div>
+    <div class="card"><div class="ci">&#128208;</div><div class="ct">Schema &amp; SEO</div><div class="cd">NewsArticle JSON-LD, Open Graph, Twitter Cards, breadcrumbs, canonical tags.</div></div>
+    <div class="card"><div class="ci">&#9855;</div><div class="ct">WCAG 2.1 AA</div><div class="cd">Skip links, ARIA labels, keyboard nav, focus-visible, semantic HTML5.</div></div>
+  </div>
+</section>
+<hr/>
+
+<!-- REQUIREMENTS -->
+<section class="sec" id="requirements">
+  <div class="eyebrow">Prerequisites</div>
+  <h2>Requirements</h2>
+  <table>
+    <thead><tr><th>Requirement</th><th>Minimum</th><th>Recommended</th></tr></thead>
+    <tbody>
+      <tr><td>WordPress</td><td>6.3</td><td>6.7+</td></tr>
+      <tr><td>PHP</td><td>8.0</td><td>8.2+</td></tr>
+      <tr><td>MySQL / MariaDB</td><td>5.7 / 10.3</td><td>8.0 / 10.6+</td></tr>
+      <tr><td>Browser</td><td colspan="2">All modern browsers (ES2017+, CSS Grid)</td></tr>
+    </tbody>
+  </table>
+  <div class="note nb"><span class="ni">&#8505;&#65039;</span><div><strong>Cache Compatibility</strong>WP Super Cache, W3 Total Cache, LiteSpeed Cache, WP Rocket, and Redis Object Cache are all fully supported.</div></div>
+</section>
+<hr/>
+
+<!-- INSTALLATION -->
+<section class="sec" id="installation">
+  <div class="eyebrow">Setup</div>
+  <h2>Installation</h2>
+  <h3>Method 1 &mdash; WordPress Admin Upload</h3>
+  <ol class="steps">
+    <li><div class="sn">1</div><div class="sc"><strong>Upload</strong><span>Navigate to <code>Appearance &rarr; Themes &rarr; Add New &rarr; Upload Theme</code>. Select <code>pressgrid.zip</code> and click Install Now.</span></div></li>
+    <li><div class="sn">2</div><div class="sc"><strong>Activate</strong><span>Click Activate on the theme page, or go to Appearance &rarr; Themes and activate PressGrid.</span></div></li>
+    <li><div class="sn">3</div><div class="sc"><strong>Configure Colors</strong><span>Go to <code>Appearance &rarr; Customize &rarr; PressGrid: Colors</code> to set your brand palette.</span></div></li>
+    <li><div class="sn">4</div><div class="sc"><strong>Build Layout</strong><span>Go to <code>Appearance &rarr; Layout Builder</code> and configure your homepage sections.</span></div></li>
+    <li><div class="sn">5</div><div class="sc"><strong>Set Up Menus</strong><span>Go to <code>Appearance &rarr; Menus</code>. Assign menus to Primary, Footer, and Secondary locations.</span></div></li>
+  </ol>
+  <h3>Method 2 &mdash; WP-CLI</h3>
+  <pre><span class="fn">wp</span> <span class="kw">theme</span> install pressgrid.zip --activate</pre>
+  <h3>Method 3 &mdash; FTP</h3>
+  <pre><span class="cm"># Unzip and upload to:</span>
+<span class="var">/wp-content/themes/pressgrid/</span></pre>
+</section>
+<hr/>
+
+<!-- FILE STRUCTURE -->
+<section class="sec" id="file-structure">
+  <div class="eyebrow">Architecture</div>
+  <h2>File Structure</h2>
+  <div class="ftree">
+<span class="d">pressgrid/</span>
+&#9500;&#9472;&#9472; <span class="f">style.css</span>               <span class="n">&#8592; Theme header + full CSS</span>
+&#9500;&#9472;&#9472; <span class="f">functions.php</span>           <span class="n">&#8592; Core setup, enqueue, transients, SEO</span>
+&#9500;&#9472;&#9472; <span class="f">header.php</span>              <span class="n">&#8592; Sticky nav, breaking ticker, logo</span>
+&#9500;&#9472;&#9472; <span class="f">footer.php</span>              <span class="n">&#8592; Widgets, nav, developer credit</span>
+&#9500;&#9472;&#9472; <span class="f">index.php</span>               <span class="n">&#8592; Fallback template</span>
+&#9500;&#9472;&#9472; <span class="f">front-page.php</span>          <span class="n">&#8592; Layout Builder homepage</span>
+&#9500;&#9472;&#9472; <span class="f">single.php</span>              <span class="n">&#8592; Single post with author box, tags</span>
+&#9500;&#9472;&#9472; <span class="f">archive.php</span>             <span class="n">&#8592; Category / tag / author archives</span>
+&#9500;&#9472;&#9472; <span class="f">page.php</span>                <span class="n">&#8592; Static pages</span>
+&#9500;&#9472;&#9472; <span class="f">search.php / 404.php</span>    <span class="n">&#8592; Search &amp; error pages</span>
+&#9500;&#9472;&#9472; <span class="f">comments.php</span>            <span class="n">&#8592; Threaded comments + form</span>
+&#9500;&#9472;&#9472; <span class="d">inc/</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="f">security.php</span>        <span class="n">&#8592; Headers, XMLRPC, font upload</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="f">customizer.php</span>      <span class="n">&#8592; Customizer controls + CSS vars</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="f">typography.php</span>      <span class="n">&#8592; Secure woff2 upload admin page</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="f">ads.php</span>             <span class="n">&#8592; 6 ad zones, sanitization</span>
+&#9474;   &#9492;&#9472;&#9472; <span class="f">layout-builder.php</span>  <span class="n">&#8592; Layout Builder + Security page</span>
+&#9500;&#9472;&#9472; <span class="d">template-parts/</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="d">content/</span>
+&#9474;   &#9474;   &#9500;&#9472;&#9472; <span class="f">post-card.php</span>   <span class="n">&#8592; Reusable post card component</span>
+&#9474;   &#9474;   &#9492;&#9472;&#9472; <span class="f">none.php</span>        <span class="n">&#8592; No results state</span>
+&#9474;   &#9492;&#9472;&#9472; <span class="d">layout/</span>
+&#9474;       &#9500;&#9472;&#9472; <span class="f">hero.php</span>
+&#9474;       &#9500;&#9472;&#9472; <span class="f">latest-posts.php</span>
+&#9474;       &#9500;&#9472;&#9472; <span class="f">category-grid.php</span>
+&#9474;       &#9500;&#9472;&#9472; <span class="f">trending.php</span>
+&#9474;       &#9500;&#9472;&#9472; <span class="f">editor-picks.php</span>
+&#9474;       &#9492;&#9472;&#9472; <span class="f">newsletter.php</span>
+&#9500;&#9472;&#9472; <span class="d">assets/js/</span>
+&#9474;   &#9500;&#9472;&#9472; <span class="f">main.js</span>             <span class="n">&#8592; Nav, lazy-load, a11y (deferred)</span>
+&#9474;   &#9492;&#9472;&#9472; <span class="f">customizer-preview.js</span>
+&#9500;&#9472;&#9472; <span class="d">languages/pressgrid.pot</span>
+&#9500;&#9472;&#9472; <span class="f">screenshot.png</span>
+&#9492;&#9472;&#9472; <span class="f">readme.txt</span>
+  </div>
+</section>
+<hr/>
+
+<!-- CUSTOMIZER -->
+<section class="sec" id="customizer">
+  <div class="eyebrow">Appearance &rarr; Customize</div>
+  <h2>Customizer</h2>
+  <p>All visual settings are managed through the WordPress Customizer with live preview via postMessage CSS variable transport.</p>
+  <h3>Color Panel</h3>
+  <table>
+    <thead><tr><th>Setting</th><th>CSS Variable</th><th>Default</th></tr></thead>
+    <tbody>
+      <tr><td>Primary Color</td><td><code>--pg-primary</code></td><td><code>#1a73e8</code></td></tr>
+      <tr><td>Secondary Color</td><td><code>--pg-secondary</code></td><td><code>#0d47a1</code></td></tr>
+      <tr><td>Accent Color</td><td><code>--pg-accent</code></td><td><code>#e91e63</code></td></tr>
+      <tr><td>Background Color</td><td><code>--pg-bg</code></td><td><code>#ffffff</code></td></tr>
+      <tr><td>Text Color</td><td><code>--pg-text</code></td><td><code>#212121</code></td></tr>
+      <tr><td>Link Hover Color</td><td><code>--pg-link-hover</code></td><td><code>#0d47a1</code></td></tr>
+    </tbody>
+  </table>
+  <h3>Layout Options</h3>
+  <table>
+    <thead><tr><th>Setting</th><th>Options</th></tr></thead>
+    <tbody>
+      <tr><td>Sidebar Position</td><td>Right / Left / None (Full Width)</td></tr>
+      <tr><td>Breaking News Bar</td><td>Enable / Disable</td></tr>
+      <tr><td>Breaking News Category</td><td>Category ID — 0 = all posts</td></tr>
+      <tr><td>Developer Credit</td><td>Show / Hide in footer</td></tr>
+    </tbody>
+  </table>
+</section>
+<hr/>
+
+<!-- LAYOUT BUILDER -->
+<section class="sec" id="layout-builder">
+  <div class="eyebrow">Appearance &rarr; Layout Builder</div>
+  <h2>Layout Builder</h2>
+  <p>Configure the homepage at <code>Appearance &rarr; Layout Builder</code>. Each section can be independently enabled, assigned a layout type, source category, and post count.</p>
+  <div class="note nb"><span class="ni">&#128161;</span><div><strong>Transient Cache</strong>Saving layout settings automatically clears all PressGrid transients so new configuration takes effect immediately.</div></div>
+  <h3>Available Sections</h3>
+  <table>
+    <thead><tr><th>Section</th><th>Default Layout</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>hero</code></td><td>hero-grid</td><td>1 large featured + sidebar cards</td></tr>
+      <tr><td><code>latest_posts</code></td><td>grid-3</td><td>Most recent posts in configurable grid</td></tr>
+      <tr><td><code>category_grid</code></td><td>grid-4</td><td>Posts from a specific category (cached)</td></tr>
+      <tr><td><code>trending</code></td><td>list</td><td>Trending by comment count, last 7 days</td></tr>
+      <tr><td><code>editor_picks</code></td><td>grid-4</td><td>Random featured posts, 30-min cache</td></tr>
+      <tr><td><code>newsletter</code></td><td>newsletter</td><td>Newsletter CTA section</td></tr>
+      <tr><td><code>custom_html</code></td><td>custom_html</td><td>Free-form HTML (wp_kses_post sanitized)</td></tr>
+      <tr><td><code>ad_block</code></td><td>ad_block</td><td>Renders the between-posts ad zone</td></tr>
+    </tbody>
+  </table>
+</section>
+<hr/>
+
+<!-- ADS -->
+<section class="sec" id="ads">
+  <div class="eyebrow">Appearance &rarr; Theme Ads</div>
+  <h2>Advertisement System</h2>
+  <p>Manage all ad placements at <code>Appearance &rarr; Theme Ads</code>. Each zone is independently configurable.</p>
+  <h3>Ad Zones</h3>
+  <table>
+    <thead><tr><th>Zone ID</th><th>Location</th><th>Typical Size</th></tr></thead>
+    <tbody>
+      <tr><td><code>header</code></td><td>Below sticky navigation</td><td>728&times;90</td></tr>
+      <tr><td><code>sidebar_top</code></td><td>Top of sidebar</td><td>300&times;250</td></tr>
+      <tr><td><code>sidebar_middle</code></td><td>Middle of sidebar</td><td>300&times;250 or 300&times;600</td></tr>
+      <tr><td><code>in_article</code></td><td>Above article content on single posts</td><td>Responsive</td></tr>
+      <tr><td><code>between_posts</code></td><td>Homepage Ad Block section</td><td>Responsive</td></tr>
+      <tr><td><code>footer</code></td><td>Above site footer</td><td>728&times;90</td></tr>
+    </tbody>
+  </table>
+  <h3>Rendering in Templates</h3>
+  <pre><span class="fn">pressgrid_render_ad</span>( <span class="str">'sidebar_top'</span> );</pre>
+  <div class="note nb"><span class="ni">&#128274;</span><div><strong>Security</strong>All ad HTML output runs through <code>wp_kses()</code> with a strict allowed-tags whitelist before rendering.</div></div>
+</section>
+<hr/>
+
+<!-- TYPOGRAPHY -->
+<section class="sec" id="typography">
+  <div class="eyebrow">Appearance &rarr; Font Upload</div>
+  <h2>Typography</h2>
+  <p>PressGrid ships with a system font stack. Upload a custom <code>.woff2</code> via <code>Appearance &rarr; Font Upload</code>.</p>
+  <h3>Secure Upload Process</h3>
+  <ol class="steps">
+    <li><div class="sn">1</div><div class="sc"><strong>Upload font</strong><span>Select a <code>.woff2</code> file (max 1MB). MIME type validated by WOFF2 magic bytes before saving.</span></div></li>
+    <li><div class="sn">2</div><div class="sc"><strong>Set family name</strong><span><code>Appearance &rarr; Customize &rarr; Typography</code> &rarr; enter font family name (e.g. <em>MyFont</em>).</span></div></li>
+    <li><div class="sn">3</div><div class="sc"><strong>Apply to elements</strong><span>Check: Body, Headings, Menu, or Buttons. Fallback stack is always preserved.</span></div></li>
+  </ol>
+  <div class="note nr"><span class="ni">&#128274;</span><div><strong>Security</strong>Validates WOFF2 magic bytes (0x774F4632), enforces 1MB cap, random renames files, stores in protected directory with .htaccess allowing only .woff2 access.</div></div>
+</section>
+<hr/>
+
+<!-- MENUS -->
+<section class="sec" id="menus">
+  <div class="eyebrow">Appearance &rarr; Menus</div>
+  <h2>Menus &amp; Widgets</h2>
+  <h3>Navigation Locations</h3>
+  <table>
+    <thead><tr><th>Location</th><th>ID</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>Primary Menu</td><td><code>primary</code></td><td>Sticky header nav, 2-level dropdowns</td></tr>
+      <tr><td>Footer Menu</td><td><code>footer</code></td><td>Horizontal links in footer bottom bar</td></tr>
+      <tr><td>Secondary Menu</td><td><code>secondary</code></td><td>Available for custom use</td></tr>
+    </tbody>
+  </table>
+  <h3>Widget Areas</h3>
+  <table>
+    <thead><tr><th>Widget Area</th><th>ID</th><th>Location</th></tr></thead>
+    <tbody>
+      <tr><td>Primary Sidebar</td><td><code>sidebar-1</code></td><td>Archives, singles, search pages</td></tr>
+      <tr><td>Footer Column 1</td><td><code>footer-1</code></td><td>4-column footer widget grid</td></tr>
+      <tr><td>Footer Column 2</td><td><code>footer-2</code></td><td>4-column footer widget grid</td></tr>
+      <tr><td>Footer Column 3</td><td><code>footer-3</code></td><td>4-column footer widget grid</td></tr>
+      <tr><td>Footer Column 4</td><td><code>footer-4</code></td><td>4-column footer widget grid</td></tr>
+    </tbody>
+  </table>
+</section>
+<hr/>
+
+<!-- PERFORMANCE -->
+<section class="sec" id="performance">
+  <div class="eyebrow">Engineering</div>
+  <h2>Performance Architecture</h2>
+  <div class="pgrid">
+    <div class="pc"><div class="ps green">95+</div><div class="pl">Lighthouse Score</div><div class="psub">Performance target</div></div>
+    <div class="pc"><div class="ps blue">0</div><div class="pl">Render-Blocking JS</div><div class="psub">All scripts deferred</div></div>
+    <div class="pc"><div class="ps green">~18KB</div><div class="pl">CSS Size</div><div class="psub">No framework overhead</div></div>
+    <div class="pc"><div class="ps blue">Low</div><div class="pl">CLS Score</div><div class="psub">Explicit img dimensions</div></div>
+  </div>
+  <h3>Transient Cache Strategy</h3>
+  <table>
+    <thead><tr><th>Transient Key</th><th>TTL</th><th>Cleared When</th></tr></thead>
+    <tbody>
+      <tr><td><code>pressgrid_hero_posts</code></td><td>5 min</td><td>save_post / delete_post</td></tr>
+      <tr><td><code>pressgrid_trending_posts</code></td><td>10 min</td><td>save_post / delete_post</td></tr>
+      <tr><td><code>pressgrid_cat_grid_{id}</code></td><td>5 min</td><td>Per-category on post save</td></tr>
+      <tr><td><code>pressgrid_editor_picks</code></td><td>30 min</td><td>save_post / delete_post</td></tr>
+    </tbody>
+  </table>
+  <h3>Query Optimization</h3>
+  <ul>
+    <li><strong>No query_posts()</strong> &mdash; All queries use WP_Query directly</li>
+    <li><strong>no_found_rows: true</strong> &mdash; Skips SQL_CALC_FOUND_ROWS on cached queries</li>
+    <li><strong>Post ID caching</strong> &mdash; Only IDs stored in transients, query reconstructed from cache</li>
+    <li><strong>Indexed columns only</strong> &mdash; No meta_query on unindexed keys</li>
+    <li><strong>Pagination everywhere</strong> &mdash; No unbounded loops on archive templates</li>
+  </ul>
+</section>
+<hr/>
+
+<!-- SECURITY -->
+<section class="sec" id="security">
+  <div class="eyebrow">Hardening</div>
+  <h2>Security</h2>
+  <ul class="cl">
+    <li><span class="ck">&#10003;</span>Every $_POST goes through wp_verify_nonce() + current_user_can()</li>
+    <li><span class="ck">&#10003;</span>All output escaped with esc_html(), esc_url(), esc_attr(), wp_kses_post()</li>
+    <li><span class="ck">&#10003;</span>Ad HTML filtered through wp_kses() with strict allowed-tags whitelist</li>
+    <li><span class="ck">&#10003;</span>Font upload: WOFF2 magic-byte validation, 1MB cap, random filename, protected dir</li>
+    <li><span class="ck">&#10003;</span>Security headers: X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy</li>
+    <li><span class="ck">&#10003;</span>WordPress version removed from head and all feeds</li>
+    <li><span class="ck">&#10003;</span>Author enumeration blocked via /?author=N redirect</li>
+    <li><span class="ck">&#10003;</span>Login error messages genericized to prevent username enumeration</li>
+    <li><span class="ck">&#10003;</span>No eval(), no direct DB queries, no obfuscated code</li>
+    <li><span class="ck">&#10003;</span>Direct file access blocked: if(!defined('ABSPATH')) exit; in every PHP file</li>
+    <li><span class="ck">&#10003;</span>Optional XML-RPC disable at Appearance &rarr; Theme Security</li>
+    <li><span class="ck">&#10003;</span>All functions prefixed pressgrid_ &mdash; no global namespace pollution</li>
+  </ul>
+  <h3>Security Headers</h3>
+  <pre><span class="var">X-Content-Type-Options</span>: <span class="str">nosniff</span>
+<span class="var">X-Frame-Options</span>: <span class="str">SAMEORIGIN</span>
+<span class="var">X-XSS-Protection</span>: <span class="str">1; mode=block</span>
+<span class="var">Referrer-Policy</span>: <span class="str">strict-origin-when-cross-origin</span>
+<span class="var">Permissions-Policy</span>: <span class="str">geolocation=(), microphone=(), camera=()</span></pre>
+</section>
+<hr/>
+
+<!-- SEO -->
+<section class="sec" id="seo">
+  <div class="eyebrow">Search &amp; Discovery</div>
+  <h2>SEO &amp; Schema</h2>
+  <p>Structured data and social metadata output automatically on every applicable page type.</p>
+  <h3>NewsArticle Schema (JSON-LD)</h3>
+  <pre><span class="kw">{</span>
+  <span class="str">"@context"</span>: <span class="str">"https://schema.org"</span>,
+  <span class="str">"@type"</span>: <span class="str">"NewsArticle"</span>,
+  <span class="str">"headline"</span>: <span class="str">"Article title"</span>,
+  <span class="str">"datePublished"</span>: <span class="str">"2024-01-01T00:00:00+00:00"</span>,
+  <span class="str">"author"</span>: <span class="kw">{</span> <span class="str">"@type"</span>: <span class="str">"Person"</span> <span class="kw">}</span>,
+  <span class="str">"publisher"</span>: <span class="kw">{</span> <span class="str">"@type"</span>: <span class="str">"Organization"</span> <span class="kw">}</span>
+<span class="kw">}</span></pre>
+  <h3>Other SEO Features</h3>
+  <ul>
+    <li>Open Graph: og:title, og:description, og:image, og:type, og:site_name</li>
+    <li>Twitter Cards: summary_large_image with auto-featured image</li>
+    <li>Canonical &lt;link&gt; tag on every page</li>
+    <li>Semantic HTML5: header, main, article, nav, aside, footer</li>
+    <li>Post reading time estimation in meta</li>
+    <li>Breadcrumb navigation with schema-ready markup</li>
+  </ul>
+</section>
+<hr/>
+
+<!-- HOOKS -->
+<section class="sec" id="hooks">
+  <div class="eyebrow">Developer API</div>
+  <h2>Hooks &amp; Public Functions</h2>
+  <h3>Key Public Functions</h3>
+  <pre><span class="fn">pressgrid_breadcrumbs</span>();
+<span class="fn">pressgrid_post_meta</span>( <span class="var">$post_id</span> );
+<span class="fn">pressgrid_render_ad</span>( <span class="str">'sidebar_top'</span> );
+<span class="fn">pressgrid_get_category_label</span>( <span class="var">$post_id</span> );
+<span class="var">$q</span> = <span class="fn">pressgrid_get_hero_posts</span>( <span class="num">3</span> );
+<span class="var">$q</span> = <span class="fn">pressgrid_get_trending_posts</span>( <span class="num">6</span> );
+<span class="var">$q</span> = <span class="fn">pressgrid_get_category_posts</span>( <span class="var">$cat_id</span>, <span class="num">4</span> );</pre>
+  <h3>Filters</h3>
+  <table>
+    <thead><tr><th>Filter</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>pressgrid_content_width</code></td><td>860</td><td>Global $content_width in pixels</td></tr>
+      <tr><td><code>excerpt_length</code></td><td>20</td><td>Words in auto-excerpts</td></tr>
+      <tr><td><code>wp_headers</code></td><td>&mdash;</td><td>Security headers added here</td></tr>
+    </tbody>
+  </table>
+</section>
+<hr/>
+
+<!-- TRANSLATION -->
+<section class="sec" id="translation">
+  <div class="eyebrow">i18n / l10n</div>
+  <h2>Translation</h2>
+  <p>All user-facing strings use text domain <code>pressgrid</code>. A <code>.pot</code> template is included in <code>/languages/</code>.</p>
+  <h3>WP-CLI</h3>
+  <pre><span class="cm"># Generate fresh POT file</span>
+<span class="fn">wp</span> i18n make-pot . languages/pressgrid.pot --domain=pressgrid
+
+<span class="cm"># Compile PO to MO</span>
+<span class="fn">msgfmt</span> languages/pressgrid-bg_BG.po -o languages/pressgrid-bg_BG.mo</pre>
+</section>
+<hr/>
+
+<!-- TEMPLATE PARTS -->
+<section class="sec" id="template-parts">
+  <div class="eyebrow">Modular Architecture</div>
+  <h2>Template Parts</h2>
+  <h3>Calling with Args</h3>
+  <pre><span class="fn">get_template_part</span>(
+  <span class="str">'template-parts/layout/category-grid'</span>,
+  <span class="kw">null</span>,
+  <span class="var">array</span>( <span class="str">'layout'</span> => <span class="str">'grid-3'</span>, <span class="str">'category'</span> => <span class="num">5</span>, <span class="str">'post_count'</span> => <span class="num">6</span> )
+);</pre>
+  <h3>Child Theme Override</h3>
+  <pre><span class="cm"># In your child theme, copy at same relative path:</span>
+<span class="var">child-theme/template-parts/content/post-card.php</span></pre>
+</section>
+<hr/>
+
+<!-- CACHING -->
+<section class="sec" id="caching">
+  <div class="eyebrow">Infrastructure</div>
+  <h2>Caching</h2>
+  <div class="note ng"><span class="ni">&#9989;</span><div><strong>Full Compatibility</strong>Works with WP Super Cache, W3TC, LiteSpeed, WP Rocket, Redis, and Memcached.</div></div>
+  <h3>Manual Cache Clear</h3>
+  <pre><span class="fn">delete_transient</span>( <span class="str">'pressgrid_hero_posts'</span> );
+<span class="fn">delete_transient</span>( <span class="str">'pressgrid_trending_posts'</span> );
+<span class="fn">delete_transient</span>( <span class="str">'pressgrid_cat_grid_'</span> . <span class="var">$cat_id</span> );</pre>
+</section>
+<hr/>
+
+<!-- CHANGELOG -->
+<section class="sec" id="changelog">
+  <div class="eyebrow">History</div>
+  <h2>Changelog</h2>
+  <h3>v1.0.0 &mdash; Initial Release</h3>
+  <ul>
+    <li>Full theme architecture: Layout Builder, Ad Zones, Customizer</li>
+    <li>Security hardening: headers, MIME validation, nonces, escaping throughout</li>
+    <li>Transient caching for hero, trending, category, editor picks</li>
+    <li>NewsArticle schema, Open Graph, Twitter Cards</li>
+    <li>Vanilla JS: nav, lazy load, dropdowns, smooth scroll</li>
+    <li>WCAG 2.1 AA accessibility compliance</li>
+    <li>WordPress.org Theme Review guidelines compliance</li>
+    <li>GPL-2.0-or-later license</li>
+  </ul>
+  <div class="note nb" style="margin-top:2rem">
+    <span class="ni">&#128279;</span>
+    <div><strong>Links</strong>
+      <a href="https://github.com/milenstanchev/pressgrid" target="_blank" rel="noopener noreferrer">GitHub Repository</a> &nbsp;&middot;&nbsp;
+      <a href="https://stanchev.bg/" target="_blank" rel="noopener noreferrer">Author Website</a> &nbsp;&middot;&nbsp;
+      Theme by <strong>Milen Stanchev</strong>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+<button class="bktop" id="bt" aria-label="Back to top">&#8593;</button>
+<script>
+(function(){
+  var mt=document.getElementById('mt'),
+      sb=document.getElementById('sb'),
+      ov=document.getElementById('ov'),
+      bt=document.getElementById('bt');
+  function open(){sb.classList.add('open');ov.classList.add('open')}
+  function close(){sb.classList.remove('open');ov.classList.remove('open')}
+  mt.addEventListener('click',function(){sb.classList.contains('open')?close():open()});
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  var secs=document.querySelectorAll('[id]'),
+      links=document.querySelectorAll('.nav-items a');
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id;
+        links.forEach(function(a){
+          a.classList.remove('active');
+          if(a.getAttribute('href')==='#'+id)a.classList.add('active');
+        });
+      }
+    });
+  },{rootMargin:'-15% 0px -75% 0px'});
+  secs.forEach(function(s){if(s.id)obs.observe(s)});
+  window.addEventListener('scroll',function(){bt.classList.toggle('v',window.scrollY>400)},{passive:true});
+  bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  links.forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<=920)close()})});
+})();
+</script>
+</body>
+</html>
