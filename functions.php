@@ -23,6 +23,7 @@ require_once PRESSGRID_DIR . '/inc/customizer.php';
 require_once PRESSGRID_DIR . '/inc/typography.php';
 require_once PRESSGRID_DIR . '/inc/ads.php';
 require_once PRESSGRID_DIR . '/inc/layout-builder.php';
+require_once PRESSGRID_DIR . '/inc/weather.php';
 
 /**
  * Theme setup.
