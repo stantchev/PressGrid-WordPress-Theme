@@ -25,6 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 		<div class="pg-container">
 			<div class="pg-topbar-inner">
 				<span class="pg-topbar-date"><?php echo esc_html( date_i18n( get_option( 'date_format' ) ) ); ?></span>
+				<?php pressgrid_render_topbar_weather(); ?>
 				<div class="pg-topbar-social" aria-label="<?php esc_attr_e( 'Social Media', 'pressgrid' ); ?>">
 					<?php
 					$social_links = array(
