@@ -1,0 +1,564 @@
+# PressGrid WordPress Theme — English (UK) translation
+# Copyright (C) 2025 Milen Stanchev
+# This file is distributed under the GNU GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PressGrid 2.0.0\n"
+"Report-Msgid-Bugs-To: https://stanchev.bg/\n"
+"POT-Creation-Date: 2025-03-07 08:00+0000\n"
+"PO-Revision-Date: 2025-03-07 08:00+0000\n"
+"Last-Translator: Milen Stanchev <info@stanchev.bg>\n"
+"Language-Team: English (UK) <en_GB@li.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: PressGrid Build Script\n"
+"X-Domain: pressgrid\n"
+
+msgid "Skip to content"
+msgstr "Skip to content"
+
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+msgid "Primary Navigation"
+msgstr "Primary Navigation"
+
+msgid "Primary Menu"
+msgstr "Primary Menu"
+
+msgid "Footer Menu"
+msgstr "Footer Menu"
+
+msgid "Secondary Menu"
+msgstr "Secondary Menu"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Navigate"
+msgstr "Navigate"
+
+msgid "View All"
+msgstr "View All"
+
+msgid "Left"
+msgstr "Left"
+
+msgid "Right"
+msgstr "Right"
+
+msgid "No Sidebar (Full Width)"
+msgstr "No Sidebar (Full Width)"
+
+msgid "Breaking"
+msgstr "Breaking"
+
+msgid "Breaking News"
+msgstr "Breaking News"
+
+msgid "Breaking News Category ID"
+msgstr "Breaking News Category ID"
+
+msgid "Show Breaking News Bar"
+msgstr "Show Breaking News Bar"
+
+msgid "Enter the category ID for breaking news ticker. 0 = latest posts."
+msgstr "Enter the category ID for breaking news ticker. 0 = latest posts."
+
+msgid "Featured Stories"
+msgstr "Featured Stories"
+
+msgid "Latest News"
+msgstr "Latest News"
+
+msgid "Latest Posts"
+msgstr "Latest Posts"
+
+msgid "Trending Now"
+msgstr "Trending Now"
+
+msgid "Opinion"
+msgstr "Opinion"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "No trending posts yet."
+msgstr "No trending posts yet."
+
+msgid "No picks yet."
+msgstr "No picks yet."
+
+msgid "No featured video yet."
+msgstr "No featured video yet."
+
+msgid "Subscribe to Our Newsletter"
+msgstr "Subscribe to Our Newsletter"
+
+msgid "Newsletter signup"
+msgstr "Newsletter signup"
+
+msgid "Subscribe"
+msgstr "Subscribe"
+
+msgid "Your email address"
+msgstr "Your email address"
+
+msgid "Enter your email address"
+msgstr "Enter your email address"
+
+msgid "Get the latest news delivered straight to your inbox. No spam, ever."
+msgstr "Get the latest news delivered straight to your inbox. No spam, ever."
+
+msgid "Vremeto"
+msgstr "Weather"
+
+msgid "PressGrid: Времето"
+msgstr "PressGrid: Weather"
+
+msgid "OpenWeather API ключ"
+msgstr "OpenWeather API Key"
+
+msgid "Град (напр. Sofia,BG)"
+msgstr "City (e.g. Sofia,BG)"
+
+msgid "Единици (metric / imperial)"
+msgstr "Units (metric / imperial)"
+
+msgid "Покажи прогноза за времето"
+msgstr "Show weather forecast"
+
+msgid "Покажи в горната лента"
+msgstr "Show in top bar"
+
+msgid "Прогноза за времето"
+msgstr "Weather forecast"
+
+msgid "Засичане на локация"
+msgstr "Detect location"
+
+msgid "Влажност"
+msgstr "Humidity"
+
+msgid "Вятър"
+msgstr "Wind"
+
+msgid "Облачност"
+msgstr "Cloudiness"
+
+msgid "Усеща се като %s"
+msgstr "Feels like %s"
+
+msgid "Въведете OpenWeather API ключ в Customizer → PressGrid: Времето"
+msgstr "Enter OpenWeather API key in Customizer → PressGrid: Weather"
+
+msgid "Данните за времето не са налични. Проверете API ключа и града."
+msgstr "Weather data unavailable. Check your API key and city."
+
+msgid "Sidebar"
+msgstr "Sidebar"
+
+msgid "Primary Sidebar"
+msgstr "Primary Sidebar"
+
+msgid "Secondary Sidebar"
+msgstr "Secondary Sidebar"
+
+msgid "Sidebar Top"
+msgstr "Sidebar Top"
+
+msgid "Sidebar Middle"
+msgstr "Sidebar Middle"
+
+msgid "Sidebar Position"
+msgstr "Sidebar Position"
+
+msgid "Add widgets here to appear in the main sidebar."
+msgstr "Add widgets here to appear in the main sidebar."
+
+msgid "Add widgets here to appear in the secondary sidebar."
+msgstr "Add widgets here to appear in the secondary sidebar."
+
+msgid "Абонирайте се за бюлетина"
+msgstr "Subscribe to Our Newsletter"
+
+msgid "Абониране"
+msgstr "Subscribe"
+
+msgid "Вашият имейл"
+msgstr "Your email"
+
+msgid "Имейл адрес"
+msgstr "Email address"
+
+msgid "Изпрати"
+msgstr "Submit"
+
+msgid "Реклама"
+msgstr "Advertisement"
+
+msgid "Advertisement"
+msgstr "Advertisement"
+
+msgid "Header Ad"
+msgstr "Header Ad"
+
+msgid "Footer Ad"
+msgstr "Footer Ad"
+
+msgid "In-Article Ad"
+msgstr "In-Article Ad"
+
+msgid "Between Posts"
+msgstr "Between Posts"
+
+msgid "Theme Ads"
+msgstr "Theme Ads"
+
+msgid "PressGrid Ad Zones"
+msgstr "PressGrid Ad Zones"
+
+msgid "Ad Code (HTML)"
+msgstr "Ad Code (HTML)"
+
+msgid "Ad settings saved."
+msgstr "Ad settings saved."
+
+msgid "Save Ad Settings"
+msgstr "Save Ad Settings"
+
+msgid "Enable Zone"
+msgstr "Enable Zone"
+
+msgid "Enable this ad zone"
+msgstr "Enable this ad zone"
+
+msgid "Paste ad HTML or image code. Scripts are sanitized."
+msgstr "Paste ad HTML or image code. Scripts are sanitized."
+
+msgid "Manage advertisement zones. Paste ad code (HTML/JS) for each zone. Use wp_kses-safe code only."
+msgstr "Manage advertisement zones. Paste ad code (HTML/JS) for each zone. Use wp_kses-safe code only."
+
+msgid "Show on Desktop"
+msgstr "Show on Desktop"
+
+msgid "Show on Mobile"
+msgstr "Show on Mobile"
+
+msgid "Visibility"
+msgstr "Visibility"
+
+msgid "Async Load (wrap in lazy observer)"
+msgstr "Async Load (wrap in lazy observer)"
+
+msgid "PressGrid Layout Builder"
+msgstr "PressGrid Layout Builder"
+
+msgid "Theme Layout Builder"
+msgstr "Theme Layout Builder"
+
+msgid "Layout Builder"
+msgstr "Layout Builder"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Layout saved successfully."
+msgstr "Layout saved successfully."
+
+msgid "Save Layout"
+msgstr "Save Layout"
+
+msgid "Enable/disable and configure each homepage section. Order is fixed to section sequence."
+msgstr "Enable/disable and configure each homepage section. Order is fixed to section sequence."
+
+msgid "Enable"
+msgstr "Enable"
+
+msgid "Post Count"
+msgstr "Post Count"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Font Settings"
+msgstr "Font Settings"
+
+msgid "Font Upload"
+msgstr "Font Upload"
+
+msgid "PressGrid Font Upload"
+msgstr "PressGrid Font Upload"
+
+msgid "PressGrid: Typography"
+msgstr "PressGrid: Typography"
+
+msgid "Font Family Name"
+msgstr "Font Family Name"
+
+msgid "Font File (.woff2)"
+msgstr "Font File (.woff2)"
+
+msgid "Custom Font URL (.woff2)"
+msgstr "Custom Font URL (.woff2)"
+
+msgid "Current Font"
+msgstr "Current Font"
+
+msgid "Upload Font"
+msgstr "Upload Font"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Apply to Headings"
+msgstr "Apply to Headings"
+
+msgid "Apply to Body Text"
+msgstr "Apply to Body Text"
+
+msgid "Apply to Menu"
+msgstr "Apply to Menu"
+
+msgid "Apply to Buttons"
+msgstr "Apply to Buttons"
+
+msgid "Display name for your custom font (e.g. \"MyFont\"). Used in CSS font-family declarations."
+msgstr "Display name for your custom font (e.g. \"MyFont\"). Used in CSS font-family declarations."
+
+msgid "Enter the URL of an uploaded .woff2 font file. Use the Font Upload section in Theme Settings to upload safely."
+msgstr "Enter the URL of an uploaded .woff2 font file. Use the Font Upload section in Theme Settings to upload safely."
+
+msgid "Upload a custom .woff2 font file (max 1MB). After uploading, set the Font Family Name in Appearance → Customize → Typography."
+msgstr "Upload a custom .woff2 font file (max 1MB). After uploading, set the Font Family Name in Appearance → Customize → Typography."
+
+msgid "Font uploaded successfully. URL: %s"
+msgstr "Font uploaded successfully. URL: %s"
+
+msgid "Only .woff2 files are allowed."
+msgstr "Only .woff2 files are allowed."
+
+msgid "Only .woff2 files, maximum 1MB."
+msgstr "Only .woff2 files, maximum 1MB."
+
+msgid "File must be under 1MB."
+msgstr "File must be under 1MB."
+
+msgid "Invalid WOFF2 file signature."
+msgstr "Invalid WOFF2 file signature."
+
+msgid "Invalid upload."
+msgstr "Invalid upload."
+
+msgid "No file was uploaded."
+msgstr "No file was uploaded."
+
+msgid "Could not create font directory."
+msgstr "Could not create font directory."
+
+msgid "Could not read file."
+msgstr "Could not read file."
+
+msgid "Could not save file."
+msgstr "Could not save file."
+
+msgid "PressGrid: Colors"
+msgstr "PressGrid: Colors"
+
+msgid "PressGrid: Layout"
+msgstr "PressGrid: Layout"
+
+msgid "PressGrid: Social Media"
+msgstr "PressGrid: Social Media"
+
+msgid "Theme Colors"
+msgstr "Theme Colors"
+
+msgid "Primary Color"
+msgstr "Primary Color"
+
+msgid "Secondary Color"
+msgstr "Secondary Color"
+
+msgid "Accent Color"
+msgstr "Accent Color"
+
+msgid "Background Color"
+msgstr "Background Color"
+
+msgid "Text Color"
+msgstr "Text Color"
+
+msgid "Link Hover Color"
+msgstr "Link Hover Color"
+
+msgid "Social Media"
+msgstr "Social Media"
+
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+msgid "Twitter / X URL"
+msgstr "Twitter / X URL"
+
+msgid "YouTube URL"
+msgstr "YouTube URL"
+
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+msgid "PressGrid Security Settings"
+msgstr "PressGrid Security Settings"
+
+msgid "Theme Security"
+msgstr "Theme Security"
+
+msgid "XML-RPC"
+msgstr "XML-RPC"
+
+msgid "Disable XML-RPC endpoint"
+msgstr "Disable XML-RPC endpoint"
+
+msgid "Improves security but may break some plugins."
+msgstr "Improves security but may break some plugins."
+
+msgid "Save Security Settings"
+msgstr "Save Security Settings"
+
+msgid "Security check failed."
+msgstr "Security check failed."
+
+msgid "Insufficient permissions."
+msgstr "Insufficient permissions."
+
+msgid "You do not have permission to access this page."
+msgstr "You do not have permission to access this page."
+
+msgid "Login failed. Please check your credentials and try again."
+msgstr "Login failed. Please check your credentials and try again."
+
+msgid "Footer Column 1"
+msgstr "Footer Column 1"
+
+msgid "Footer Column 2"
+msgstr "Footer Column 2"
+
+msgid "Footer Column 3"
+msgstr "Footer Column 3"
+
+msgid "Footer Column 4"
+msgstr "Footer Column 4"
+
+msgid "Footer column 1 widgets."
+msgstr "Footer column 1 widgets."
+
+msgid "Footer column 2 widgets."
+msgstr "Footer column 2 widgets."
+
+msgid "Footer column 3 widgets."
+msgstr "Footer column 3 widgets."
+
+msgid "Footer column 4 widgets."
+msgstr "Footer column 4 widgets."
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "Theme by"
+msgstr "Theme by"
+
+msgid "Show Developer Credit in Footer"
+msgstr "Show Developer Credit in Footer"
+
+msgid "Milen Stanchev"
+msgstr "Milen Stanchev"
+
+msgid "By"
+msgstr "By"
+
+msgid "at"
+msgstr "at"
+
+msgid "Tags:"
+msgstr "Tags:"
+
+msgid "Pages:"
+msgstr "Pages:"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+msgid "Posts pagination"
+msgstr "Posts pagination"
+
+msgid "Comment navigation"
+msgstr "Comment navigation"
+
+msgid "Newer Comments"
+msgstr "Newer Comments"
+
+msgid "Older Comments"
+msgstr "Older Comments"
+
+msgid "Next &raquo;"
+msgstr "Next &raquo;"
+
+msgid "&laquo; Previous"
+msgstr "&laquo; Previous"
+
+msgid "Previous:"
+msgstr "Previous:"
+
+msgid "Next:"
+msgstr "Next:"
+
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "One thought on &ldquo;%s&rdquo;"
+
+msgid "(Updated: %s)"
+msgstr "(Updated: %s)"
+
+msgid "Your comment is awaiting moderation."
+msgstr "Your comment is awaiting moderation."
+
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "This post is password protected. Enter the password to view any comments."
+
+msgid "Nothing Found"
+msgstr "Nothing Found"
+
+msgid "Page Not Found"
+msgstr "Page Not Found"
+
+msgid "404 Not Found"
+msgstr "404 Not Found"
+
+msgid "&larr; Back to Home"
+msgstr "&larr; Back to Home"
+
+msgid "Search Results for: %s"
+msgstr "Search Results for: %s"
+
+msgid "Search: %s"
+msgstr "Search: %s"
+
+msgid "No results found. Try a different search term."
+msgstr "No results found. Try a different search term."
+
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+
+msgid "It seems we cannot find what you are looking for. Perhaps searching can help."
+msgstr "It seems we cannot find what you are looking for. Perhaps searching can help."
+
+msgid "Custom HTML"
+msgstr "Custom HTML"
+
+msgid "— All —"
+msgstr "— All —"

@@ -1,0 +1,564 @@
+# PressGrid WordPress Theme — Bulgarian translation
+# Copyright (C) 2025 Milen Stanchev
+# This file is distributed under the GNU GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PressGrid 2.0.0\n"
+"Report-Msgid-Bugs-To: https://stanchev.bg/\n"
+"POT-Creation-Date: 2025-03-07 08:00+0000\n"
+"PO-Revision-Date: 2025-03-07 08:00+0000\n"
+"Last-Translator: Milen Stanchev <info@stanchev.bg>\n"
+"Language-Team: Bulgarian <bg_BG@li.org>\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: PressGrid Build Script\n"
+"X-Domain: pressgrid\n"
+
+msgid "Skip to content"
+msgstr "Към съдържанието"
+
+msgid "Toggle navigation"
+msgstr "Отвори навигацията"
+
+msgid "Primary Navigation"
+msgstr "Главна навигация"
+
+msgid "Primary Menu"
+msgstr "Главно меню"
+
+msgid "Footer Menu"
+msgstr "Меню в долна лента"
+
+msgid "Secondary Menu"
+msgstr "Вторично меню"
+
+msgid "Home"
+msgstr "Начало"
+
+msgid "Navigate"
+msgstr "Навигация"
+
+msgid "View All"
+msgstr "Виж всички"
+
+msgid "Left"
+msgstr "Ляво"
+
+msgid "Right"
+msgstr "Дясно"
+
+msgid "No Sidebar (Full Width)"
+msgstr "Без странична лента (пълна ширина)"
+
+msgid "Breaking"
+msgstr "Последни новини"
+
+msgid "Breaking News"
+msgstr "Последни новини"
+
+msgid "Breaking News Category ID"
+msgstr "Категория за последни новини (ID)"
+
+msgid "Show Breaking News Bar"
+msgstr "Покажи лентата с последни новини"
+
+msgid "Enter the category ID for breaking news ticker. 0 = latest posts."
+msgstr "Въведете ID на категория за тикера. 0 = последни публикации."
+
+msgid "Featured Stories"
+msgstr "Избрани статии"
+
+msgid "Latest News"
+msgstr "Последни новини"
+
+msgid "Latest Posts"
+msgstr "Последни публикации"
+
+msgid "Trending Now"
+msgstr "Популярно сега"
+
+msgid "Opinion"
+msgstr "Мнения"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "No trending posts yet."
+msgstr "Все още няма популярни публикации."
+
+msgid "No picks yet."
+msgstr "Все още няма избрани."
+
+msgid "No featured video yet."
+msgstr "Все още няма избрано видео."
+
+msgid "Subscribe to Our Newsletter"
+msgstr "Абонирайте се за бюлетина"
+
+msgid "Newsletter signup"
+msgstr "Записване за бюлетин"
+
+msgid "Subscribe"
+msgstr "Абониране"
+
+msgid "Your email address"
+msgstr "Вашият имейл адрес"
+
+msgid "Enter your email address"
+msgstr "Въведете имейл адрес"
+
+msgid "Get the latest news delivered straight to your inbox. No spam, ever."
+msgstr "Получавайте последните новини директно в пощата си. Без спам."
+
+msgid "Vremeto"
+msgstr "Времето"
+
+msgid "PressGrid: Времето"
+msgstr "PressGrid: Времето"
+
+msgid "OpenWeather API ключ"
+msgstr "OpenWeather API ключ"
+
+msgid "Град (напр. Sofia,BG)"
+msgstr "Град (напр. Sofia,BG)"
+
+msgid "Единици (metric / imperial)"
+msgstr "Единици (metric / imperial)"
+
+msgid "Покажи прогноза за времето"
+msgstr "Покажи прогноза за времето"
+
+msgid "Покажи в горната лента"
+msgstr "Покажи в горната лента"
+
+msgid "Прогноза за времето"
+msgstr "Прогноза за времето"
+
+msgid "Засичане на локация"
+msgstr "Засичане на локация"
+
+msgid "Влажност"
+msgstr "Влажност"
+
+msgid "Вятър"
+msgstr "Вятър"
+
+msgid "Облачност"
+msgstr "Облачност"
+
+msgid "Усеща се като %s"
+msgstr "Усеща се като %s"
+
+msgid "Въведете OpenWeather API ключ в Customizer → PressGrid: Времето"
+msgstr "Въведете OpenWeather API ключ в Customizer → PressGrid: Времето"
+
+msgid "Данните за времето не са налични. Проверете API ключа и града."
+msgstr "Данните за времето не са налични. Проверете API ключа и града."
+
+msgid "Sidebar"
+msgstr "Странична лента"
+
+msgid "Primary Sidebar"
+msgstr "Главна странична лента"
+
+msgid "Secondary Sidebar"
+msgstr "Вторична странична лента"
+
+msgid "Sidebar Top"
+msgstr "Горе в страничната лента"
+
+msgid "Sidebar Middle"
+msgstr "В средата на страничната лента"
+
+msgid "Sidebar Position"
+msgstr "Позиция на страничната лента"
+
+msgid "Add widgets here to appear in the main sidebar."
+msgstr "Добавете уиджети тук за главната странична лента."
+
+msgid "Add widgets here to appear in the secondary sidebar."
+msgstr "Добавете уиджети тук за вторичната странична лента."
+
+msgid "Абонирайте се за бюлетина"
+msgstr "Абонирайте се за бюлетина"
+
+msgid "Абониране"
+msgstr "Абониране"
+
+msgid "Вашият имейл"
+msgstr "Вашият имейл"
+
+msgid "Имейл адрес"
+msgstr "Имейл адрес"
+
+msgid "Изпрати"
+msgstr "Изпрати"
+
+msgid "Реклама"
+msgstr "Реклама"
+
+msgid "Advertisement"
+msgstr "Реклама"
+
+msgid "Header Ad"
+msgstr "Реклама в хедъра"
+
+msgid "Footer Ad"
+msgstr "Реклама в футъра"
+
+msgid "In-Article Ad"
+msgstr "Реклама в статията"
+
+msgid "Between Posts"
+msgstr "Между публикациите"
+
+msgid "Theme Ads"
+msgstr "Реклами в темата"
+
+msgid "PressGrid Ad Zones"
+msgstr "Рекламни зони PressGrid"
+
+msgid "Ad Code (HTML)"
+msgstr "Рекламен код (HTML)"
+
+msgid "Ad settings saved."
+msgstr "Рекламните настройки са запазени."
+
+msgid "Save Ad Settings"
+msgstr "Запази рекламни настройки"
+
+msgid "Enable Zone"
+msgstr "Активирай зона"
+
+msgid "Enable this ad zone"
+msgstr "Активирай тази рекламна зона"
+
+msgid "Paste ad HTML or image code. Scripts are sanitized."
+msgstr "Поставете HTML код на рекламата. Скриптовете се филтрират."
+
+msgid "Manage advertisement zones. Paste ad code (HTML/JS) for each zone. Use wp_kses-safe code only."
+msgstr "Управлявайте рекламни зони. Само wp_kses-съвместим код."
+
+msgid "Show on Desktop"
+msgstr "Покажи на десктоп"
+
+msgid "Show on Mobile"
+msgstr "Покажи на мобилно"
+
+msgid "Visibility"
+msgstr "Видимост"
+
+msgid "Async Load (wrap in lazy observer)"
+msgstr "Асинхронно зареждане"
+
+msgid "PressGrid Layout Builder"
+msgstr "Конструктор на оформлението PressGrid"
+
+msgid "Theme Layout Builder"
+msgstr "Конструктор на оформлението"
+
+msgid "Layout Builder"
+msgstr "Конструктор на оформлението"
+
+msgid "Layout"
+msgstr "Оформление"
+
+msgid "Layout saved successfully."
+msgstr "Оформлението е запазено успешно."
+
+msgid "Save Layout"
+msgstr "Запази оформлението"
+
+msgid "Enable/disable and configure each homepage section. Order is fixed to section sequence."
+msgstr "Включвайте/изключвайте и конфигурирайте секциите на началната страница."
+
+msgid "Enable"
+msgstr "Включи"
+
+msgid "Post Count"
+msgstr "Брой публикации"
+
+msgid "Options"
+msgstr "Опции"
+
+msgid "Font Settings"
+msgstr "Настройки на шрифтовете"
+
+msgid "Font Upload"
+msgstr "Качване на шрифт"
+
+msgid "PressGrid Font Upload"
+msgstr "Качване на шрифт PressGrid"
+
+msgid "PressGrid: Typography"
+msgstr "PressGrid: Типография"
+
+msgid "Font Family Name"
+msgstr "Име на шрифтовото семейство"
+
+msgid "Font File (.woff2)"
+msgstr "Файл с шрифт (.woff2)"
+
+msgid "Custom Font URL (.woff2)"
+msgstr "URL на потребителски шрифт (.woff2)"
+
+msgid "Current Font"
+msgstr "Текущ шрифт"
+
+msgid "Upload Font"
+msgstr "Качи шрифт"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Apply to Headings"
+msgstr "Приложи към заглавия"
+
+msgid "Apply to Body Text"
+msgstr "Приложи към основен текст"
+
+msgid "Apply to Menu"
+msgstr "Приложи към меню"
+
+msgid "Apply to Buttons"
+msgstr "Приложи към бутони"
+
+msgid "Display name for your custom font (e.g. \"MyFont\"). Used in CSS font-family declarations."
+msgstr "Показвано име на шрифта (напр. \"МоятШрифт\"). Използва се в CSS."
+
+msgid "Enter the URL of an uploaded .woff2 font file. Use the Font Upload section in Theme Settings to upload safely."
+msgstr "Въведете URL на качен .woff2 файл. Използвайте секцията за качване."
+
+msgid "Upload a custom .woff2 font file (max 1MB). After uploading, set the Font Family Name in Appearance → Customize → Typography."
+msgstr "Качете .woff2 файл (макс. 1MB). След качването задайте името в Appearance → Customize → Typography."
+
+msgid "Font uploaded successfully. URL: %s"
+msgstr "Шрифтът е качен успешно. URL: %s"
+
+msgid "Only .woff2 files are allowed."
+msgstr "Разрешени са само .woff2 файлове."
+
+msgid "Only .woff2 files, maximum 1MB."
+msgstr "Само .woff2 файлове, максимум 1MB."
+
+msgid "File must be under 1MB."
+msgstr "Файлът трябва да е под 1MB."
+
+msgid "Invalid WOFF2 file signature."
+msgstr "Невалиден WOFF2 файл."
+
+msgid "Invalid upload."
+msgstr "Невалидно качване."
+
+msgid "No file was uploaded."
+msgstr "Не е качен файл."
+
+msgid "Could not create font directory."
+msgstr "Не може да се създаде папка за шрифтове."
+
+msgid "Could not read file."
+msgstr "Не може да се прочете файлът."
+
+msgid "Could not save file."
+msgstr "Не може да се запише файлът."
+
+msgid "PressGrid: Colors"
+msgstr "PressGrid: Цветове"
+
+msgid "PressGrid: Layout"
+msgstr "PressGrid: Оформление"
+
+msgid "PressGrid: Social Media"
+msgstr "PressGrid: Социални мрежи"
+
+msgid "Theme Colors"
+msgstr "Цветове на темата"
+
+msgid "Primary Color"
+msgstr "Основен цвят"
+
+msgid "Secondary Color"
+msgstr "Вторичен цвят"
+
+msgid "Accent Color"
+msgstr "Акцентен цвят"
+
+msgid "Background Color"
+msgstr "Цвят на фона"
+
+msgid "Text Color"
+msgstr "Цвят на текста"
+
+msgid "Link Hover Color"
+msgstr "Цвят при задържане на линк"
+
+msgid "Social Media"
+msgstr "Социални мрежи"
+
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+msgid "Twitter / X URL"
+msgstr "Twitter / X URL"
+
+msgid "YouTube URL"
+msgstr "YouTube URL"
+
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+msgid "PressGrid Security Settings"
+msgstr "Настройки за сигурност PressGrid"
+
+msgid "Theme Security"
+msgstr "Сигурност на темата"
+
+msgid "XML-RPC"
+msgstr "XML-RPC"
+
+msgid "Disable XML-RPC endpoint"
+msgstr "Деактивирай XML-RPC крайна точка"
+
+msgid "Improves security but may break some plugins."
+msgstr "Подобрява сигурността, но може да наруши работата на някои плъгини."
+
+msgid "Save Security Settings"
+msgstr "Запази настройките за сигурност"
+
+msgid "Security check failed."
+msgstr "Проверката за сигурност е неуспешна."
+
+msgid "Insufficient permissions."
+msgstr "Недостатъчни права."
+
+msgid "You do not have permission to access this page."
+msgstr "Нямате право на достъп до тази страница."
+
+msgid "Login failed. Please check your credentials and try again."
+msgstr "Неуспешен вход. Проверете данните си и опитайте отново."
+
+msgid "Footer Column 1"
+msgstr "Футър колона 1"
+
+msgid "Footer Column 2"
+msgstr "Футър колона 2"
+
+msgid "Footer Column 3"
+msgstr "Футър колона 3"
+
+msgid "Footer Column 4"
+msgstr "Футър колона 4"
+
+msgid "Footer column 1 widgets."
+msgstr "Уиджети за футър колона 1."
+
+msgid "Footer column 2 widgets."
+msgstr "Уиджети за футър колона 2."
+
+msgid "Footer column 3 widgets."
+msgstr "Уиджети за футър колона 3."
+
+msgid "Footer column 4 widgets."
+msgstr "Уиджети за футър колона 4."
+
+msgid "All rights reserved."
+msgstr "Всички права запазени."
+
+msgid "Theme by"
+msgstr "Тема от"
+
+msgid "Show Developer Credit in Footer"
+msgstr "Покажи кредит за разработчика в футъра"
+
+msgid "Milen Stanchev"
+msgstr "Milen Stanchev"
+
+msgid "By"
+msgstr "От"
+
+msgid "at"
+msgstr "в"
+
+msgid "Tags:"
+msgstr "Тагове:"
+
+msgid "Pages:"
+msgstr "Страници:"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Breadcrumbs"
+msgstr "Хлебни трохи"
+
+msgid "Posts pagination"
+msgstr "Навигация между публикации"
+
+msgid "Comment navigation"
+msgstr "Навигация между коментари"
+
+msgid "Newer Comments"
+msgstr "По-нови коментари"
+
+msgid "Older Comments"
+msgstr "По-стари коментари"
+
+msgid "Next &raquo;"
+msgstr "Следваща &raquo;"
+
+msgid "&laquo; Previous"
+msgstr "&laquo; Предишна"
+
+msgid "Previous:"
+msgstr "Предишна:"
+
+msgid "Next:"
+msgstr "Следваща:"
+
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Едно мнение за &ldquo;%s&rdquo;"
+
+msgid "(Updated: %s)"
+msgstr "(Обновено: %s)"
+
+msgid "Your comment is awaiting moderation."
+msgstr "Коментарът ви очаква одобрение."
+
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Тази публикация е защитена с парола. Въведете паролата, за да видите коментарите."
+
+msgid "Nothing Found"
+msgstr "Нищо не е намерено"
+
+msgid "Page Not Found"
+msgstr "Страницата не е намерена"
+
+msgid "404 Not Found"
+msgstr "404 Не е намерено"
+
+msgid "&larr; Back to Home"
+msgstr "&larr; Обратно към началото"
+
+msgid "Search Results for: %s"
+msgstr "Резултати от търсенето: %s"
+
+msgid "Search: %s"
+msgstr "Търсене: %s"
+
+msgid "No results found. Try a different search term."
+msgstr "Няма намерени резултати. Опитайте с различна дума."
+
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Съжаляваме, но нищо не съответства на търсенето ви. Опитайте с различни ключови думи."
+
+msgid "It seems we cannot find what you are looking for. Perhaps searching can help."
+msgstr "Изглежда не можем да намерим това, което търсите. Може би търсачката ще помогне."
+
+msgid "Custom HTML"
+msgstr "Потребителски HTML"
+
+msgid "— All —"
+msgstr "— Всички —"
