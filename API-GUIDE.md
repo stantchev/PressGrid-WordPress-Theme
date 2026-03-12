@@ -1,120 +1,115 @@
-# PressGrid — Ръководство за API интеграции
+# PressGrid — API Integration Guide
 
-Темата използва **три external API-та**. Всички са безопасни за GDPR
-(данните се кешират на сървъра, браузърът на читателя не прави директни заявки),
-и всички данни минават само през WordPress transient cache.
+The theme uses **three external APIs**. All are GDPR-safe — data is cached on the server and the visitor's browser never makes direct requests to any of these services. All data flows exclusively through WordPress transient cache.
 
 ---
 
 ## 1. Google Fonts API
-**Използва се за:** Зареждане на шрифтовете Playfair Display, Barlow Condensed и Barlow.
+**Used for:** Loading the Playfair Display, Barlow Condensed, and Barlow typefaces.
 
-### Нужен ли е API ключ?
-**Не.** Google Fonts работи без регистрация и без ключ.
+### Is an API key required?
+**No.** Google Fonts works without registration or a key of any kind.
 
-### Как работи в темата?
-Шрифтовете се зареждат чрез `@import` в `style.css`:
+### How it works in the theme
+Fonts are loaded via `@import` in `style.css`:
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display...');
 ```
 
-### Алтернатива (privacy-first)
-Ако искате да избегнете Google и да хоствате шрифтовете локално:
-1. Отидете на [google-webfonts-helper.herokuapp.com](https://google-webfonts-helper.herokuapp.com)
-2. Изтеглете `.woff2` файловете
-3. Качете ги чрез **Appearance → Theme Settings → Font Upload**
-4. Задайте ги в **Appearance → Customize → PressGrid: Typography**
+### Privacy-first alternative (self-hosted fonts)
+If you want to avoid Google and host the fonts locally:
+1. Go to [google-webfonts-helper.herokuapp.com](https://google-webfonts-helper.herokuapp.com)
+2. Download the `.woff2` files
+3. Upload them via **Appearance → Theme Settings → Font Upload**
+4. Set the font family name in **Appearance → Customize → PressGrid: Typography**
 
-### Документация
+### Documentation
 - https://developers.google.com/fonts/docs/getting_started
 
 ---
 
 ## 2. OpenWeatherMap API
-**Използва се за:** Weather widget в sidebar-а и мини widget в top bar-а.
+**Used for:** Weather widget in the sidebar and the mini widget in the top bar.
 
-### Нужен ли е API ключ?
-**Да — безплатен.** Free tier е напълно достатъчен.
+### Is an API key required?
+**Yes — free.** The free tier is more than sufficient.
 
-### Как да получите API ключ (стъпка по стъпка)
+### How to get an API key (step by step)
 
-1. Отидете на [openweathermap.org](https://openweathermap.org)
-2. Кликнете **Sign In → Create an Account**
-3. Попълнете имейл и парола, потвърдете имейла
-4. След login отидете на **API Keys** (горе вдясно → вашето име → My API Keys)
-5. Има автоматично генериран ключ на името **Default** — копирайте го
-6. Или кликнете **Generate** за нов ключ с произволно име
+1. Go to [openweathermap.org](https://openweathermap.org)
+2. Click **Sign In → Create an Account**
+3. Fill in your email and password, then confirm your email address
+4. After logging in, go to **API Keys** (top right → your name → My API Keys)
+5. There is an auto-generated key called **Default** — copy it
+6. Or click **Generate** to create a new key with a custom name
 
-> ⚠️ Новите ключове активират се след **10-15 минути**. Ако получите грешка веднага след регистрация — изчакайте малко.
+> ⚠️ New keys take **10–15 minutes** to activate. If you get an error immediately after registration — wait a moment and try again.
 
-### Конфигурация в темата
-**Appearance → Customize → PressGrid: Времето**
-- **OpenWeather API ключ** — поставете ключа от стъпка 5/6
-- **Град** — формат `Sofia,BG` или `London,GB` или `New York,US`
-- **Единици** — `metric` (°C) или `imperial` (°F)
-- **Покажи прогноза за времето** — включва sidebar widget
-- **Покажи в горната лента** — включва мини widget в top bar
+### Configuration in the theme
+**Appearance → Customize → PressGrid: Weather**
+- **OpenWeather API key** — paste the key from step 5/6
+- **City** — format: `Sofia,BG` or `London,GB` or `New York,US`
+- **Units** — `metric` (°C) or `imperial` (°F)
+- **Show weather forecast** — enables the full sidebar widget
+- **Show in top bar** — enables the mini widget in the top bar
 
-### Безплатен план — лимити
+### Free plan limits
 | | Free |
 |---|---|
-| Заявки / ден | 1,000 |
-| Заявки / мин | 60 |
-| Прогноза | 5 дни |
-| Цена | $0 |
+| Requests / day | 1,000 |
+| Requests / min | 60 |
+| Forecast range | 5 days |
+| Price | $0 |
 
-Темата кешира данните **30 минути** (current) и **1 час** (forecast),
-така че реалното потребление е ~48 заявки/ден — далеч под лимита.
+The theme caches data for **30 minutes** (current conditions) and **1 hour** (forecast), so real-world usage is approximately 48 requests/day — well within the free limit.
 
-### Endpoint-и, използвани от темата
+### Endpoints used by the theme
 ```
 GET https://api.openweathermap.org/data/2.5/weather
-    ?q=Sofia,BG&appid=YOUR_KEY&units=metric&lang=bg
+    ?q=Sofia,BG&appid=YOUR_KEY&units=metric&lang=en
 
 GET https://api.openweathermap.org/data/2.5/forecast
-    ?q=Sofia,BG&appid=YOUR_KEY&units=metric&cnt=40&lang=bg
+    ?q=Sofia,BG&appid=YOUR_KEY&units=metric&cnt=40&lang=en
 ```
 
-### Документация
+### Documentation
 - https://openweathermap.org/api
 - https://openweathermap.org/current
 - https://openweathermap.org/forecast5
 
 ---
 
-## 3. Frankfurter API (валутни курсове)
-**Използва се за:** Forex тикер в top bar-а — замества Breaking News тикера
-автоматично когато сайтът има активна "Бизнес" / "Финанси" секция в Layout Builder-а.
+## 3. Frankfurter API (Exchange Rates)
+**Used for:** Forex ticker in the top bar — automatically replaces the Breaking News ticker when the site has an active "Business" or "Finance" section in the Layout Builder.
 
-### Нужен ли е API ключ?
-**Не.** Frankfurter е напълно безплатен, open-source и без регистрация.
-Данните идват директно от **Европейската централна банка (ЕЦБ)**.
+### Is an API key required?
+**No.** Frankfurter is completely free, open-source, and requires no registration whatsoever. Data comes directly from the **European Central Bank (ECB)**.
 
-### Как работи автоматичното включване
-Темата проверява Layout Builder секциите:
-- Ако някоя активна секция е насочена към категория с slug
-  `business`, `biznes`, `бизнес`, `finance`, `финанси`, `economy` (и др.)
-  → форекс тикерът се показва **автоматично** вместо Breaking News
-- Ако искате да го включите ръчно без такава категория:
-  **Customize → PressGrid: Валути → Показвай винаги** ✓
+### How the automatic activation works
+The theme inspects the Layout Builder sections:
+- If any active section targets a category with a slug of
+  `business`, `biznes`, `finance`, `economy`, `markets`, `money` (and others)
+  → the forex ticker is shown **automatically** in place of Breaking News
+- To enable it manually without such a category:
+  **Customize → PressGrid: Currencies → Always show** ✓
 
-### Конфигурация в темата
-**Appearance → Customize → PressGrid: Валути (Forex)**
-- **Базова валута** — от коя валута да се изчисляват курсовете (по подразбиране: `EUR`)
-- **Показвани валути** — разделени със запетая (по подразбиране: `USD,GBP,BGN,CHF,JPY`)
-- **Slug на бизнес категорията** — само ако slug-ът е нестандартен (напр. `news-biz`)
-- **Показвай винаги** — принудително включване без да проверява Layout Builder
+### Configuration in the theme
+**Appearance → Customize → PressGrid: Currencies (Forex)**
+- **Base currency** — the currency rates are calculated from (default: `EUR`)
+- **Display currencies** — comma-separated (default: `USD,GBP,BGN,CHF,JPY`)
+- **Business category slug** — only needed if your category has a non-standard slug (e.g. `news-biz`)
+- **Always show** — forces the ticker on regardless of Layout Builder state
 
-### Поддържани валути (ISO 4217)
+### Supported currencies (ISO 4217)
 EUR, USD, GBP, BGN, CHF, JPY, CAD, AUD, CNY, RUB, TRY, RON, HUF, CZK, PLN
-и още ~30+ валути. Пълен списък: https://api.frankfurter.app/currencies
+and 30+ more. Full list: https://api.frankfurter.app/currencies
 
-### Endpoint, използван от темата
+### Endpoint used by the theme
 ```
 GET https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,BGN,CHF,JPY
 ```
 
-### Примерен отговор
+### Example response
 ```json
 {
   "amount": 1.0,
@@ -130,38 +125,33 @@ GET https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,BGN,CHF,JPY
 }
 ```
 
-### Ограничения
-- Обновява се **веднъж дневно** (работни дни, ~16:00 CET)
-- Без rate limit за нормална употреба
-- Уикенди и празници — показват се последните налични данни
+### Limitations
+- Updates **once per day** (weekdays, ~16:00 CET)
+- No rate limit for normal usage
+- Weekends and public holidays — the last available data is shown
 
-Темата кешира данните **6 часа**, така че практически правите ~4 заявки/ден.
+The theme caches data for **6 hours**, so in practice you make ~4 requests/day.
 
-### Документация
+### Documentation
 - https://www.frankfurter.app/docs
 - GitHub: https://github.com/hakanensari/frankfurter
 
 ---
 
-## Обобщение
+## Summary
 
-| API | Ключ | Цена | Cache в темата |
+| API | Key required | Cost | Cache |
 |---|---|---|---|
-| Google Fonts | Не | Безплатен | Браузърен cache |
-| OpenWeatherMap | Да (безплатен) | Free tier: $0 | 30 мин / 1 час |
-| Frankfurter (ЕЦБ) | Не | Безплатен | 6 часа |
+| Google Fonts | No | Free | Browser cache |
+| OpenWeatherMap | Yes (free) | $0 | 30 min / 1 hour |
+| Frankfurter (ECB) | No | Free | 6 hours |
 
 ---
 
-## GDPR бележка
+## GDPR Note
 
-Всички API заявки се правят **от сървъра** (PHP `wp_remote_get`),
-не от браузъра на посетителя. Данните се съхраняват временно като
-WordPress transients в базата данни.
+All API requests are made **server-side** (PHP `wp_remote_get`) — the visitor's browser never contacts these services directly. Data is stored temporarily as WordPress transients in the database.
 
-Единственото изключение е **Google Fonts** — браузърът зарежда шрифтовете
-директно от Google. Ако това е проблем, използвайте локалния upload (виж т.1).
+The one exception is **Google Fonts** — the browser loads the font files directly from Google's CDN. If this is a concern for your privacy policy, use the local font upload option instead (see section 1).
 
-За OpenWeatherMap геолокацията (бутонът ⊕ в weather widget-а) използва
-Browser Geolocation API — браузърът пита потребителя за разрешение преди
-да изпрати координатите. Не се съхраняват данни.
+For the OpenWeatherMap geolocation feature (the ⊕ button in the weather widget), the browser uses the native Geolocation API and asks the user for permission before sending any coordinates. No location data is stored or transmitted beyond the single API request.
