@@ -1,7 +1,7 @@
 <?php
 /**
  * Header Template — Newspaper style
- * Top bar → Masthead → Nav → Breaking news → Ad zone → main opens
+ * Top bar → Masthead → Nav → Breaking news / Forex ticker → Ad zone → main opens
  *
  * @package PressGrid
  */
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<div class="pg-topbar-social" aria-label="<?php esc_attr_e( 'Social Media', 'pressgrid' ); ?>">
 					<?php
 					$social_links = array(
-						'pressgrid_social_facebook'  => array( 'label' => 'Facebook',  'icon' => 'f'  ),
+						'pressgrid_social_facebook'  => array( 'label' => 'Facebook',  'icon' => 'f' ),
 						'pressgrid_social_twitter'   => array( 'label' => 'X/Twitter', 'icon' => '𝕏' ),
 						'pressgrid_social_youtube'   => array( 'label' => 'YouTube',   'icon' => '▶' ),
 						'pressgrid_social_instagram' => array( 'label' => 'Instagram', 'icon' => '◎' ),
@@ -82,21 +82,29 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 					aria-label="<?php esc_attr_e( 'Toggle navigation', 'pressgrid' ); ?>">&#9776;</button>
 				<nav id="pg-primary-nav" class="pg-primary-nav"
 					role="navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'pressgrid' ); ?>">
-					<?php
-					wp_nav_menu( array(
+					<?php wp_nav_menu( array(
 						'theme_location' => 'primary',
 						'menu_id'        => 'primary-menu',
 						'container'      => false,
 						'fallback_cb'    => 'pressgrid_fallback_menu',
-					) );
-					?>
+					) ); ?>
 				</nav>
 			</div>
 		</div>
 	</div>
 
-	<!-- ═══ BREAKING NEWS ═══ -->
-	<?php if ( get_theme_mod( 'pressgrid_breaking_news_enabled', true ) ) :
+	<!-- ═══ BREAKING NEWS  —или—  FOREX ТИКЕР ═══
+	     Логика:
+	     • Ако Layout Builder има активна секция с бизнес/финанси категория
+	       (или е включено "Показвай винаги" в Customizer → PressGrid: Валути)
+	       → показва се Frankfurter валутен тикер
+	     • Иначе → показва се стандартният Breaking News тикер
+	-->
+	<?php if ( pressgrid_has_business_section() ) : ?>
+
+		<?php pressgrid_render_forex_ticker(); ?>
+
+	<?php elseif ( get_theme_mod( 'pressgrid_breaking_news_enabled', true ) ) :
 		$breaking_cat  = absint( get_theme_mod( 'pressgrid_breaking_news_category', 0 ) );
 		$breaking_args = array(
 			'post_type'      => 'post',
