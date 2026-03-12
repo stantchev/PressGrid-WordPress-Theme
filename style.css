@@ -3,8 +3,8 @@ Theme Name:        PressGrid
 Theme URI:         https://stanchev.bg/pressgrid
 Author:            Milen Stanchev
 Author URI:        https://stanchev.bg/
-Description:       PressGrid is a high-performance, security-hardened WordPress theme built for modern news and magazine websites. Features Layout Builder, advertisement zones, full Customizer integration, and Lighthouse 95+ performance. Fully translatable and WordPress.org compliant.
-Version:           1.0.0
+Description:       PressGrid is a high-performance, security-hardened WordPress theme built for modern news and magazine websites. Features Layout Builder, advertisement zones, full Customizer integration, OpenWeather integration, Frankfurter forex ticker, and Lighthouse 95+ performance. Fully translatable and WordPress.org compliant.
+Version:           2.5.0
 Requires at least: 6.3
 Tested up to:      6.7
 Requires PHP:      8.0
@@ -868,9 +868,218 @@ a:focus-visible { outline: 2px solid var(--pg-primary); outline-offset: 2px; }
 .aligncenter { display: block; margin-inline: auto; }
 @media (max-width: 600px) { .alignleft, .alignright { float: none; margin: 0 0 14px; } }
 
+/* ==========================================================================
+   FOREX TICKER BAR — заменя Breaking News когато има бизнес секция
+   ========================================================================== */
+.pg-forex-bar {
+	background: var(--pg-black);
+	color: #ddd;
+	padding: 6px 0;
+	overflow: hidden;
+	font-family: var(--font-ui);
+	font-size: 12px;
+	border-bottom: 1px solid #222;
+}
+.pg-forex-bar.pg-forex-error {
+	display: flex; align-items: center; gap: 10px;
+	padding: 6px 16px;
+}
+.pg-forex-bar > .pg-container {
+	display: flex; align-items: center; gap: 0;
+}
+.pg-forex-label {
+	flex-shrink: 0;
+	display: flex; align-items: center; gap: 6px;
+	padding-right: 12px;
+	border-right: 1px solid #333;
+	margin-right: 12px;
+}
+.pg-forex-base {
+	background: var(--pg-red); color: #fff;
+	padding: 2px 8px; border-radius: 2px;
+	font-family: var(--font-ui); font-size: 10px; font-weight: 800;
+	text-transform: uppercase; letter-spacing: .1em;
+	white-space: nowrap;
+}
+.pg-forex-ticker-wrap {
+	flex: 1; overflow: hidden;
+}
+.pg-forex-ticker {
+	list-style: none;
+	display: flex; gap: 32px;
+	white-space: nowrap;
+	animation: pg-forex-scroll 40s linear infinite;
+}
+.pg-forex-ticker:hover { animation-play-state: paused; }
+@keyframes pg-forex-scroll {
+	0%   { transform: translateX(100%); }
+	100% { transform: translateX(-200%); }
+}
+.pg-forex-item {
+	display: inline-flex; align-items: center; gap: 6px;
+	flex-shrink: 0;
+}
+.pg-forex-pair {
+	font-family: var(--font-ui); font-size: 11px; font-weight: 700;
+	color: #aaa; text-transform: uppercase; letter-spacing: .04em;
+}
+.pg-forex-rate {
+	font-family: var(--font-ui); font-size: 12px; font-weight: 800;
+	color: #fff;
+}
+/* Разделител между двойките */
+.pg-forex-item::after {
+	content: '·';
+	color: #444;
+	margin-left: 32px;
+}
+.pg-forex-item:last-child::after { display: none; }
+.pg-forex-source { opacity: .5; }
+.pg-forex-source a {
+	color: #888; font-size: 10px; font-weight: 600;
+	text-transform: uppercase; letter-spacing: .06em;
+	text-decoration: none;
+}
+.pg-forex-source a:hover { color: var(--pg-red); }
+@media (max-width: 480px) {
+	.pg-forex-label { display: none; }
+}
+
+/* ==========================================================================
+   READING PROGRESS BAR
+   ========================================================================== */
+#pg-progress-bar {
+	position: fixed;
+	top: 0; left: 0;
+	width: 0%;
+	height: 3px;
+	background: var(--pg-red);
+	z-index: 9999;
+	transition: width .1s linear;
+	pointer-events: none;
+}
+
+/* ==========================================================================
+   BACK TO TOP BUTTON
+   ========================================================================== */
+#pg-back-to-top {
+	position: fixed;
+	bottom: 28px; right: 24px;
+	width: 40px; height: 40px;
+	background: var(--pg-red);
+	color: #fff;
+	border: none; border-radius: 2px;
+	cursor: pointer;
+	font-size: 18px; line-height: 1;
+	display: flex; align-items: center; justify-content: center;
+	opacity: 0; visibility: hidden;
+	transform: translateY(8px);
+	transition: opacity .2s, visibility .2s, transform .2s, background .15s;
+	z-index: 999;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+#pg-back-to-top.visible {
+	opacity: 1; visibility: visible; transform: translateY(0);
+}
+#pg-back-to-top:hover { background: var(--pg-red-dark); }
+
+/* ==========================================================================
+   NATIVE SHARE BUTTONS — single.php
+   ========================================================================== */
+.pg-share-bar {
+	display: flex; align-items: center; gap: 8px;
+	flex-wrap: wrap;
+	margin-top: 20px; padding-top: 16px;
+	border-top: 1px solid var(--pg-border);
+}
+.pg-share-label {
+	font-family: var(--font-ui); font-size: 11px; font-weight: 800;
+	text-transform: uppercase; letter-spacing: .1em;
+	color: var(--pg-gray-400);
+}
+.pg-share-btn {
+	display: inline-flex; align-items: center; gap: 5px;
+	padding: 5px 12px;
+	font-family: var(--font-ui); font-size: 12px; font-weight: 700;
+	text-transform: uppercase; letter-spacing: .06em;
+	border: 1px solid var(--pg-border);
+	background: #fff; color: var(--pg-black);
+	cursor: pointer; border-radius: 2px;
+	transition: background .15s, color .15s, border-color .15s;
+	text-decoration: none;
+}
+.pg-share-btn:hover {
+	background: var(--pg-black); color: #fff; border-color: var(--pg-black);
+}
+.pg-share-btn.copied {
+	background: #27ae60; color: #fff; border-color: #27ae60;
+}
+.pg-share-btn .pg-share-icon { font-size: 13px; }
+
+/* ==========================================================================
+   RELATED POSTS — след статията
+   ========================================================================== */
+.pg-related-posts {
+	margin-top: 32px; padding-top: 20px;
+	border-top: 3px solid var(--pg-black);
+}
+.pg-related-title {
+	font-family: var(--font-display); font-size: 20px; font-weight: 800;
+	color: var(--pg-black); margin-bottom: 16px;
+}
+.pg-related-grid {
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+@media (max-width: 640px) { .pg-related-grid { grid-template-columns: 1fr; } }
+.pg-related-item { display: flex; flex-direction: column; }
+.pg-related-item-thumb { overflow: hidden; margin-bottom: 8px; }
+.pg-related-item-thumb img {
+	width: 100%; height: 130px; object-fit: cover; display: block;
+	transition: transform .3s ease;
+}
+.pg-related-item:hover .pg-related-item-thumb img { transform: scale(1.04); }
+.pg-related-item-title {
+	font-family: var(--font-display); font-size: 14px; font-weight: 700;
+	line-height: 1.3; color: var(--pg-black);
+}
+.pg-related-item-title a { color: var(--pg-black); }
+.pg-related-item-title a:hover { color: var(--pg-red); }
+.pg-related-item-meta {
+	font-family: var(--font-body); font-size: 11px;
+	color: var(--pg-gray-400); margin-top: 4px;
+}
+
+/* ==========================================================================
+   STICKY SIDEBAR
+   ========================================================================== */
+.pg-sidebar {
+	position: sticky;
+	top: 80px; /* под sticky nav-а */
+	max-height: calc(100vh - 100px);
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--pg-border) transparent;
+}
+.pg-sidebar::-webkit-scrollbar { width: 4px; }
+.pg-sidebar::-webkit-scrollbar-track { background: transparent; }
+.pg-sidebar::-webkit-scrollbar-thumb { background: var(--pg-border); border-radius: 2px; }
+
+/* ==========================================================================
+   POST CARD HOVER LIFT
+   ========================================================================== */
+.pg-post-card {
+	background: #fff; overflow: hidden;
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.pg-post-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 24px rgba(0,0,0,.09);
+}
+
 /* Print */
 @media print {
-	.pg-topbar, .pg-nav-wrap, .pg-breaking-bar,
-	.pg-site-footer, .pg-sidebar, .pg-ad-zone { display: none; }
+	.pg-topbar, .pg-nav-wrap, .pg-breaking-bar, .pg-forex-bar,
+	.pg-site-footer, .pg-sidebar, .pg-ad-zone,
+	#pg-back-to-top, #pg-progress-bar, .pg-share-bar { display: none; }
 	.pg-content-area { grid-template-columns: 1fr; }
 }
