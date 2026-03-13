@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PressGrid Documentation — v2.0.0</title>
-<meta name="description" content="Full documentation for PressGrid v2.0.0 — production-ready WordPress theme for news &amp; magazine websites."/>
+<title>PressGrid Documentation — v2.5.0</title>
+<meta name="description" content="Full documentation for PressGrid v2.5.0 — production-ready WordPress theme for news &amp; magazine websites."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -21,6 +21,7 @@ body{
   font-weight:400;
   line-height:1.65;
   overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 :root{
   --red:#cc0000;
@@ -53,12 +54,12 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .pg-docs-shell{
   display:grid;
   grid-template-columns:var(--nav-w) 1fr;
-  grid-template-rows:auto 1fr;
   grid-template-areas:
     "topbar topbar"
     "masthead masthead"
     "nav-bar nav-bar"
-    "sidebar main";
+    "sidebar main"
+    "footer footer";
   min-height:100vh;
 }
 
@@ -81,15 +82,18 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:.5rem;
+  flex-wrap:wrap;
 }
-.pg-topbar-left{color:#aaa;letter-spacing:.02em}
-.pg-topbar-social{display:flex;gap:.3rem}
+.pg-topbar-left{color:#aaa;letter-spacing:.02em;white-space:nowrap}
+.pg-topbar-social{display:flex;gap:.3rem;flex-shrink:0}
 .pg-topbar-social a{
   display:flex;align-items:center;justify-content:center;
   width:22px;height:22px;
   background:#333;border-radius:2px;
   color:#ccc;font-size:.7rem;font-weight:700;
   transition:background .15s,color .15s;
+  text-decoration:none;
 }
 .pg-topbar-social a:hover{background:var(--red);color:#fff}
 
@@ -106,7 +110,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .pg-masthead-logo{
   display:inline-block;
   font-family:var(--font-display);
-  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-size:clamp(1.6rem,4vw,2.8rem);
   font-weight:900;
   letter-spacing:-.03em;
   color:var(--black);
@@ -145,17 +149,19 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:.5rem;
 }
 .pg-nav-links{
   display:flex;
   list-style:none;
   flex-wrap:wrap;
+  overflow:hidden;
 }
 .pg-nav-links li a{
   display:block;
-  padding:.65rem .9rem;
+  padding:.65rem .75rem;
   font-family:var(--font-ui);
-  font-size:.82rem;
+  font-size:.78rem;
   font-weight:700;
   letter-spacing:.05em;
   text-transform:uppercase;
@@ -177,8 +183,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   border-radius:2px;
   letter-spacing:.05em;
   white-space:nowrap;
+  flex-shrink:0;
 }
-/* Mobile hamburger */
 .pg-nav-toggle{
   display:none;
   background:none;
@@ -188,17 +194,18 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   font-size:1.2rem;
   color:var(--black);
   line-height:1;
+  flex-shrink:0;
 }
 
 /* ============================================================
-   TWO-COLUMN BODY (sidebar + main)
+   SIDEBAR
    ============================================================ */
 .pg-sidebar{
   grid-area:sidebar;
   width:var(--nav-w);
   border-right:1px solid var(--border);
   position:sticky;
-  top:44px; /* nav-bar height */
+  top:44px;
   height:calc(100vh - 44px);
   overflow-y:auto;
   scrollbar-width:thin;
@@ -207,8 +214,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 }
 .pg-sidebar::-webkit-scrollbar{width:4px}
 .pg-sidebar::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:2px}
-
-.pg-sidebar-inner{padding:1.25rem 1rem 2rem}
+.pg-sidebar-inner{padding:1.25rem 1rem 3rem}
 .pg-sib-section{margin-bottom:1.5rem}
 .pg-sib-label{
   font-family:var(--font-ui);
@@ -222,6 +228,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   margin-bottom:.6rem;
   display:block;
 }
+.pg-sib-label.new-label{color:var(--red)}
 .pg-sib-links{list-style:none}
 .pg-sib-links li{border-bottom:1px solid #f0f0f0}
 .pg-sib-links li:last-child{border-bottom:none}
@@ -264,15 +271,16 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
    ============================================================ */
 .pg-main{
   grid-area:main;
-  min-width:0; /* prevent overflow */
+  min-width:0;
   padding:2rem 2rem 4rem;
+  overflow-x:hidden;
 }
 .pg-main-inner{
   max-width:var(--content-max);
 }
 
 /* ============================================================
-   HERO BANNER (docs version)
+   HERO BANNER
    ============================================================ */
 .pg-doc-hero{
   border-bottom:3px solid var(--black);
@@ -297,7 +305,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 }
 .pg-doc-hero h1{
   font-family:var(--font-display);
-  font-size:clamp(2rem,4vw,3rem);
+  font-size:clamp(1.8rem,5vw,3rem);
   font-weight:900;
   line-height:1.1;
   letter-spacing:-.03em;
@@ -313,7 +321,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   margin-bottom:1.25rem;
   font-weight:300;
 }
-/* Tag pills */
 .pg-tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.25rem}
 .pg-tag{
   font-family:var(--font-ui);
@@ -329,7 +336,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .pg-tag.red{background:var(--red);color:#fff;border-color:var(--red)}
 .pg-tag.black{background:var(--black);color:#fff;border-color:var(--black)}
 .pg-tag.outline{background:#fff;color:var(--black)}
-/* Buttons */
 .pg-btns{display:flex;gap:.6rem;flex-wrap:wrap}
 .pg-btn{
   display:inline-flex;align-items:center;gap:.4rem;
@@ -357,29 +363,33 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   grid-template-columns:repeat(4,1fr);
   border:1px solid var(--border);
   margin-bottom:2rem;
+  overflow:hidden;
 }
 .pg-stat{
-  padding:1rem;
+  padding:1rem .75rem;
   text-align:center;
   border-right:1px solid var(--border);
+  min-width:0;
 }
 .pg-stat:last-child{border-right:none}
 .pg-stat-num{
   font-family:var(--font-display);
-  font-size:1.85rem;
+  font-size:clamp(1.2rem,3vw,1.85rem);
   font-weight:900;
   color:var(--black);
   line-height:1;
   margin-bottom:.2rem;
+  word-break:break-all;
 }
 .pg-stat-num .hi{color:var(--red)}
 .pg-stat-label{
   font-family:var(--font-ui);
-  font-size:.62rem;
+  font-size:.58rem;
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:.1em;
   color:var(--gray-400);
+  line-height:1.3;
 }
 
 /* ============================================================
@@ -398,7 +408,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 }
 .pg-section-title{
   font-family:var(--font-display);
-  font-size:1.6rem;
+  font-size:clamp(1.25rem,3vw,1.6rem);
   font-weight:800;
   color:var(--black);
   line-height:1;
@@ -440,6 +450,7 @@ hr.pg-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
   display:flex;
   align-items:center;
   gap:.5rem;
+  flex-wrap:wrap;
 }
 .pg-sub-header::before{
   content:'';
@@ -459,7 +470,7 @@ hr.pg-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
   color:#fff;
   padding:.1rem .45rem;
   border-radius:2px;
-  vertical-align:middle;
+  white-space:nowrap;
 }
 
 /* ============================================================
@@ -508,9 +519,10 @@ hr.pg-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
   border-left:3px solid var(--black);
   padding:1.25rem 1.4rem;
   font-family:var(--font-mono);
-  font-size:.78rem;
+  font-size:.75rem;
   line-height:1.9;
   overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
   white-space:pre;
   margin:1rem 0;
   max-width:100%;
@@ -531,6 +543,7 @@ code:not(pre code){
   padding:.1em .4em;
   border:1px solid var(--gray-200);
   border-radius:2px;
+  word-break:break-word;
 }
 pre{
   background:var(--black);
@@ -540,9 +553,11 @@ pre{
   line-height:1.65;
   padding:1.1rem 1.3rem;
   overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
   margin:1rem 0;
   max-width:100%;
   border-left:3px solid var(--red);
+  word-wrap:normal;
 }
 pre .cm{color:#777;font-style:italic}
 pre .kw{color:#f7654f}
@@ -553,14 +568,19 @@ pre .var{color:#e8e8e8}
 pre .prop{color:#c8a9f5}
 
 /* ============================================================
-   TABLES
+   TABLES — fully responsive
    ============================================================ */
-.pg-table-wrap{overflow-x:auto;margin:1rem 0;max-width:100%}
+.pg-table-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin:1rem 0;
+  max-width:100%;
+  border:1px solid var(--border);
+}
 table{
   width:100%;
   border-collapse:collapse;
   font-size:.83rem;
-  min-width:400px;
 }
 th{
   text-align:left;
@@ -568,21 +588,23 @@ th{
   background:var(--black);
   color:#fff;
   font-family:var(--font-ui);
-  font-size:.65rem;
+  font-size:.62rem;
   text-transform:uppercase;
   letter-spacing:.1em;
   font-weight:700;
   white-space:nowrap;
 }
 td{
-  padding:.6rem .85rem;
+  padding:.55rem .85rem;
   border-bottom:1px solid var(--border);
   color:var(--gray-600);
   vertical-align:top;
+  word-break:break-word;
 }
+tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--gray-50)}
 td:first-child{color:var(--black);font-weight:600}
-td code{font-size:.78em}
+td code{font-size:.78em;word-break:break-all}
 
 /* ============================================================
    NOTES / CALLOUTS
@@ -602,8 +624,12 @@ td code{font-size:.78em}
 .pg-note.success{border-left-color:#28a745;background:#f0fff4}
 .pg-note.danger{border-left-color:var(--red);background:#fff8f8}
 .pg-note-icon{font-size:.9rem;flex-shrink:0;margin-top:.1rem}
-.pg-note-body{color:var(--gray-600);line-height:1.55}
-.pg-note-body strong{display:block;color:var(--black);margin-bottom:.15rem;font-family:var(--font-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.pg-note-body{color:var(--gray-600);line-height:1.55;min-width:0;word-break:break-word}
+.pg-note-body strong{
+  display:block;color:var(--black);margin-bottom:.15rem;
+  font-family:var(--font-ui);font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.08em;
+}
 
 /* ============================================================
    STEPS
@@ -659,7 +685,8 @@ td code{font-size:.78em}
 }
 .pg-perf-num{
   font-family:var(--font-display);
-  font-size:2.2rem;font-weight:900;
+  font-size:clamp(1.5rem,4vw,2.2rem);
+  font-weight:900;
   line-height:1;margin-bottom:.2rem;
 }
 .pg-perf-num.red{color:var(--red)}
@@ -669,6 +696,39 @@ td code{font-size:.78em}
   text-transform:uppercase;letter-spacing:.1em;color:var(--gray-400);
 }
 .pg-perf-sub{font-size:.76rem;color:var(--gray-400);margin-top:.3rem}
+
+/* ============================================================
+   API CARDS (v2.5)
+   ============================================================ */
+.pg-api-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0}
+.pg-api-card{
+  border:1px solid var(--border);
+  padding:1.1rem 1rem;
+  position:relative;
+  background:#fff;
+}
+.pg-api-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--red);
+}
+.pg-api-card-title{
+  font-family:var(--font-display);font-size:.95rem;font-weight:800;
+  color:var(--black);margin-bottom:.4rem;
+}
+.pg-api-card-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-family:var(--font-ui);font-size:.6rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.07em;
+  padding:.15rem .5rem;border-radius:2px;margin-bottom:.6rem;
+}
+.pg-api-card-badge.free{background:#e8f5e9;color:#2e7d32}
+.pg-api-card-badge.key{background:#fff3e0;color:#e65100}
+.pg-api-card-body{font-size:.78rem;color:var(--gray-600);line-height:1.55}
+.pg-api-card-link{
+  display:block;margin-top:.6rem;
+  font-family:var(--font-ui);font-size:.68rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--red);
+}
 
 /* ============================================================
    CHANGELOG
@@ -712,6 +772,7 @@ td code{font-size:.78em}
    FOOTER
    ============================================================ */
 .pg-doc-footer{
+  grid-area:footer;
   border-top:4px solid var(--red);
   background:var(--black);
   color:#aaa;
@@ -723,7 +784,6 @@ td code{font-size:.78em}
   gap:.75rem;
   font-family:var(--font-body);
   font-size:.75rem;
-  grid-column:1/-1;
 }
 .pg-doc-footer a{color:#999}
 .pg-doc-footer a:hover{color:var(--red)}
@@ -761,18 +821,19 @@ td code{font-size:.78em}
 .pg-overlay.open{display:block}
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — Tablet
    ============================================================ */
-
-/* ── Tablet / small desktop ── */
 @media(max-width:1024px){
   .pg-card-grid{grid-template-columns:repeat(2,1fr)}
+  .pg-api-grid{grid-template-columns:repeat(2,1fr)}
   .pg-main{padding:1.5rem 1.25rem 3rem}
 }
 
-/* ── Nav collapses to hamburger, sidebar becomes drawer ── */
+/* ============================================================
+   RESPONSIVE — Mobile (sidebar becomes drawer)
+   ============================================================ */
 @media(max-width:860px){
-  :root{--nav-w:260px}
+  :root{--nav-w:280px}
 
   .pg-docs-shell{
     grid-template-columns:1fr;
@@ -780,10 +841,10 @@ td code{font-size:.78em}
       "topbar"
       "masthead"
       "nav-bar"
-      "main";
+      "main"
+      "footer";
   }
 
-  /* Sidebar becomes off-canvas drawer */
   .pg-sidebar{
     position:fixed;
     top:0;left:0;
@@ -800,43 +861,108 @@ td code{font-size:.78em}
     box-shadow:4px 0 24px rgba(0,0,0,.15);
   }
 
-  /* Top bar: show hamburger */
   .pg-nav-toggle{display:block}
   .pg-nav-links{display:none}
   .pg-nav-bar-inner{justify-content:space-between;padding:.15rem 1rem}
   .pg-nav-bar-inner .pg-nav-badge{margin-left:auto;margin-right:.75rem}
 
-  .pg-main{padding:1.25rem 1rem 3rem;grid-area:main}
+  .pg-main{padding:1.25rem 1rem 3rem}
   .pg-main-inner{max-width:100%}
-  .pg-doc-hero h1{font-size:1.75rem}
+
+  /* Stats: 2x2 grid */
+  .pg-stats{grid-template-columns:repeat(2,1fr)}
+  .pg-stat:nth-child(2){border-right:none}
+  .pg-stat:nth-child(3){border-top:1px solid var(--border)}
+  .pg-stat:nth-child(4){border-top:1px solid var(--border);border-right:none}
 }
 
-/* ── Phone ── */
-@media(max-width:560px){
-  .pg-topbar-inner{flex-direction:column;gap:.3rem;text-align:center;padding:.5rem 1rem}
+/* ============================================================
+   RESPONSIVE — Phone
+   ============================================================ */
+@media(max-width:600px){
+  /* Top bar stacks */
+  .pg-topbar-inner{
+    flex-direction:column;gap:.25rem;
+    text-align:center;padding:.4rem 1rem;
+  }
   .pg-topbar-social{justify-content:center}
-  .pg-masthead{padding:.85rem .75rem .65rem}
-  .pg-stats{grid-template-columns:repeat(2,1fr)}
-  .pg-card-grid{grid-template-columns:1fr}
-  .pg-perf-grid{grid-template-columns:1fr}
+
+  .pg-masthead{padding:.75rem .75rem .6rem}
+
+  /* Hero */
+  .pg-doc-hero h1{font-size:1.75rem}
+  .pg-doc-hero-sub{font-size:.9rem}
   .pg-btns{flex-direction:column}
-  .pg-btn{justify-content:center;text-align:center}
-  pre{font-size:.72rem;padding:.85rem 1rem}
-  .pg-ftree{font-size:.7rem;padding:1rem}
-  .pg-doc-footer{flex-direction:column;align-items:flex-start;padding:1rem}
-  .pg-section-title{font-size:1.3rem}
-  .pg-back-top{bottom:1rem;right:1rem}
+  .pg-btn{justify-content:center;text-align:center;width:100%}
+
+  /* Cards — single column */
+  .pg-card-grid{grid-template-columns:1fr}
+  .pg-api-grid{grid-template-columns:1fr}
+  .pg-perf-grid{grid-template-columns:1fr}
+
+  /* Tables — bleed to edges so content stays readable */
+  .pg-table-wrap{
+    margin-left:-1rem;margin-right:-1rem;
+    border-left:none;border-right:none;
+  }
+  table{font-size:.76rem}
+  th{font-size:.58rem;padding:.4rem .65rem}
+  td{padding:.45rem .65rem;font-size:.78rem}
+
+  /* Code */
+  pre{
+    font-size:.72rem;padding:.85rem .9rem;
+    margin-left:-1rem;margin-right:-1rem;
+    border-left:none;border-right:none;
+  }
+  .pg-ftree{
+    font-size:.67rem;padding:.85rem .9rem;
+    margin-left:-1rem;margin-right:-1rem;
+  }
+
+  /* Steps */
+  .pg-steps li{gap:.6rem}
+  .pg-step-body strong{font-size:.76rem}
+  .pg-step-body span{font-size:.8rem}
+
+  /* Notes */
+  .pg-note{padding:.7rem .85rem;font-size:.82rem}
+
+  /* Section titles */
+  .pg-section-title{font-size:1.25rem}
+  .pg-sub-header{font-size:.95rem}
+
+  /* Footer */
+  .pg-doc-footer{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:1rem 1.25rem;
+  }
+
+  /* Back to top */
+  .pg-back-top{bottom:1rem;right:.75rem;width:32px;height:32px}
+
+  /* Changelog */
   .pg-changelog-version{flex-direction:column;gap:.35rem}
 }
 
-/* ── Very small ── */
+/* ============================================================
+   RESPONSIVE — Very small (320px)
+   ============================================================ */
 @media(max-width:380px){
-  .pg-masthead-logo{font-size:1.5rem}
-  .pg-nav-badge{display:none}
-  .pg-ftree{font-size:.65rem}
+  :root{--nav-w:100vw}
+  .pg-masthead-logo{font-size:1.4rem}
+  .pg-masthead-tagline{font-size:.62rem;letter-spacing:.1em}
+  .pg-nav-badge{font-size:.6rem;padding:.15rem .4rem}
+  .pg-ftree{font-size:.6rem}
+  pre{font-size:.65rem}
+  .pg-section p,.pg-section li{font-size:.88rem}
+  .pg-stat-num{font-size:1.2rem}
 }
 
-/* ── Print ── */
+/* ============================================================
+   PRINT
+   ============================================================ */
 @media print{
   .pg-sidebar,.pg-topbar,.pg-nav-bar,.pg-back-top,.pg-overlay{display:none!important}
   .pg-docs-shell{display:block}
@@ -856,7 +982,7 @@ td code{font-size:.78em}
 <!-- ═══ TOP BAR ═══ -->
 <div class="pg-topbar">
   <div class="pg-topbar-inner">
-    <span class="pg-topbar-left">PressGrid v2.0.0 &nbsp;·&nbsp; Documentation</span>
+    <span class="pg-topbar-left">PressGrid v2.5.0 &nbsp;·&nbsp; Documentation</span>
     <div class="pg-topbar-social" aria-label="Social links">
       <a href="https://github.com/stantchev/PressGrid-WordPress-Theme" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">⌥</a>
       <a href="https://stanchev.bg/" target="_blank" rel="noopener" aria-label="Author website" title="Author">✦</a>
@@ -880,11 +1006,14 @@ td code{font-size:.78em}
       <li><a href="#customizer">Customizer</a></li>
       <li><a href="#layout-builder">Layout</a></li>
       <li><a href="#ads">Ads</a></li>
-      <li><a href="#performance">Performance</a></li>
+      <li><a href="#weather">Weather</a></li>
+      <li><a href="#forex">Forex</a></li>
+      <li><a href="#single-post">Post UX</a></li>
+      <li><a href="#performance">Perf</a></li>
       <li><a href="#security">Security</a></li>
       <li><a href="#changelog">Changelog</a></li>
     </ul>
-    <span class="pg-nav-badge">v2.0.0</span>
+    <span class="pg-nav-badge">v2.5.0</span>
   </div>
 </div>
 
@@ -910,6 +1039,16 @@ td code{font-size:.78em}
         <li><a href="#ads">Ad Zones</a></li>
         <li><a href="#typography">Typography</a></li>
         <li><a href="#menus">Menus &amp; Widgets</a></li>
+      </ul>
+    </div>
+
+    <div class="pg-sib-section">
+      <span class="pg-sib-label new-label">✦ New in v2.5</span>
+      <ul class="pg-sib-links">
+        <li><a href="#weather">Weather Widget</a></li>
+        <li><a href="#forex">Forex Ticker</a></li>
+        <li><a href="#single-post">Single Post UX</a></li>
+        <li><a href="#apis">API Reference</a></li>
       </ul>
     </div>
 
@@ -948,9 +1087,9 @@ td code{font-size:.78em}
 
 <!-- ── HERO ── -->
 <div class="pg-doc-hero" id="overview">
-  <p class="pg-doc-hero-eyebrow">WordPress Theme · v2.0.0</p>
+  <p class="pg-doc-hero-eyebrow">WordPress Theme · v2.5.0</p>
   <h1>Press<span class="accent">Grid</span></h1>
-  <p class="pg-doc-hero-sub">A production-ready, security-hardened WordPress theme engineered for high-traffic news and magazine websites. Classic editorial newspaper design, modular layout system, zero JS dependencies, and enterprise-grade security.</p>
+  <p class="pg-doc-hero-sub">A production-ready, security-hardened WordPress theme engineered for high-traffic news and magazine websites. Classic editorial newspaper design, modular layout system, OpenWeatherMap weather integration, Frankfurter ECB forex ticker, and enterprise-grade security — zero JS dependencies beyond WordPress core.</p>
   <div class="pg-tags">
     <span class="pg-tag red">WordPress 6.3+</span>
     <span class="pg-tag black">PHP 8.0+</span>
@@ -958,9 +1097,10 @@ td code{font-size:.78em}
     <span class="pg-tag outline">GPL-2.0+</span>
     <span class="pg-tag outline">Vanilla JS</span>
     <span class="pg-tag outline">WCAG 2.1 AA</span>
+    <span class="pg-tag red">v2.5.0</span>
   </div>
   <div class="pg-btns">
-    <a href="https://github.com/stantchev/PressGrid-WordPress-Theme" class="pg-btn pg-btn-primary" target="_blank" rel="noopener">↓ Download Theme</a>
+    <a href="https://github.com/stantchev/PressGrid-WordPress-Theme/releases/tag/v2.5.0" class="pg-btn pg-btn-primary" target="_blank" rel="noopener">↓ Download Theme</a>
     <a href="https://github.com/stantchev/PressGrid-WordPress-Theme" class="pg-btn pg-btn-secondary" target="_blank" rel="noopener">★ GitHub Repository</a>
   </div>
 </div>
@@ -970,22 +1110,22 @@ td code{font-size:.78em}
   <div class="pg-stat"><div class="pg-stat-num"><span class="hi">95</span>+</div><div class="pg-stat-label">Lighthouse</div></div>
   <div class="pg-stat"><div class="pg-stat-num">9</div><div class="pg-stat-label">Layout Sections</div></div>
   <div class="pg-stat"><div class="pg-stat-num">6</div><div class="pg-stat-label">Ad Zones</div></div>
-  <div class="pg-stat"><div class="pg-stat-num"><span class="hi">0</span></div><div class="pg-stat-label">JS Dependencies</div></div>
+  <div class="pg-stat"><div class="pg-stat-num"><span class="hi">3</span></div><div class="pg-stat-label">API Integrations</div></div>
 </div>
 
 <!-- ── FEATURES ── -->
 <section class="pg-section">
   <p class="pg-section-eyebrow">Core Features</p>
   <div class="pg-section-header"><h2 class="pg-section-title">What's Included</h2></div>
-  <p>PressGrid v2.0.0 combines classic editorial newspaper design with engineering discipline. Every feature is purposefully built for modern news operations.</p>
+  <p>PressGrid v2.5.0 combines classic editorial newspaper design with engineering discipline. Every feature is purposefully built for modern news operations.</p>
   <div class="pg-card-grid">
     <div class="pg-card"><div class="pg-card-icon">📰</div><div class="pg-card-title">Newspaper Design</div><div class="pg-card-desc">Classic black/white/red palette. Playfair Display headings, Barlow Condensed navigation, hero grid with sidebar stack.</div></div>
-    <div class="pg-card"><div class="pg-card-icon">⚡</div><div class="pg-card-title">Performance First</div><div class="pg-card-desc">Transient caching, deferred JS, lazy images, zero render-blocking resources. ~32KB CSS, no framework overhead.</div></div>
-    <div class="pg-card"><div class="pg-card-icon">🔒</div><div class="pg-card-title">Security Hardened</div><div class="pg-card-desc">Nonces, capability checks, MIME validation, security headers, full output escaping throughout.</div></div>
+    <div class="pg-card"><div class="pg-card-icon">⚡</div><div class="pg-card-title">Performance First</div><div class="pg-card-desc">Transient caching, deferred JS, lazy images, preconnect hints, zero render-blocking resources.</div></div>
+    <div class="pg-card"><div class="pg-card-icon">🔒</div><div class="pg-card-title">Security Hardened</div><div class="pg-card-desc">Nonces, capability checks, WOFF2 MIME validation, security headers, full output escaping throughout.</div></div>
     <div class="pg-card"><div class="pg-card-icon">🏗️</div><div class="pg-card-title">Layout Builder</div><div class="pg-card-desc">9 configurable homepage sections. Enable/disable, set layout, category, and post count per section.</div></div>
-    <div class="pg-card"><div class="pg-card-icon">📢</div><div class="pg-card-title">Ad System</div><div class="pg-card-desc">6 zones with mobile/desktop visibility, async loading, and wp_kses sanitization.</div></div>
-    <div class="pg-card"><div class="pg-card-icon">🎨</div><div class="pg-card-title">CSS Variables</div><div class="pg-card-desc">Full Customizer-driven theming via :root CSS custom properties. Live preview with postMessage transport.</div></div>
-    <div class="pg-card"><div class="pg-card-icon">🌍</div><div class="pg-card-title">Translation Ready</div><div class="pg-card-desc">Fully translatable with text domain <code>pressgrid</code> and .pot template in <code>/languages/</code>.</div></div>
+    <div class="pg-card"><div class="pg-card-icon">🌤️</div><div class="pg-card-title">Weather Widget</div><div class="pg-card-desc">OpenWeatherMap integration — sidebar widget + top bar mini widget, 5-day forecast, geolocation. <span class="pg-new-badge">v2.5</span></div></div>
+    <div class="pg-card"><div class="pg-card-icon">💱</div><div class="pg-card-title">Forex Ticker</div><div class="pg-card-desc">ECB rates via Frankfurter. Auto-activates on Business/Finance sections. No API key needed. <span class="pg-new-badge">v2.5</span></div></div>
+    <div class="pg-card"><div class="pg-card-icon">📖</div><div class="pg-card-title">Reading UX</div><div class="pg-card-desc">Progress bar, read time, native share buttons, related posts, back-to-top. Zero external JS. <span class="pg-new-badge">v2.5</span></div></div>
     <div class="pg-card"><div class="pg-card-icon">📊</div><div class="pg-card-title">SEO &amp; Schema</div><div class="pg-card-desc">NewsArticle JSON-LD, Open Graph, Twitter Cards, breadcrumbs, canonical tags on every page type.</div></div>
     <div class="pg-card"><div class="pg-card-icon">♿</div><div class="pg-card-title">WCAG 2.1 AA</div><div class="pg-card-desc">Skip links, ARIA labels, keyboard navigation, focus-visible, semantic HTML5 throughout.</div></div>
   </div>
@@ -1018,16 +1158,16 @@ td code{font-size:.78em}
 
   <h3 class="pg-sub-header">Method 1 — WordPress Admin Upload</h3>
   <ol class="pg-steps">
-    <li><div class="pg-step-num">1</div><div class="pg-step-body"><strong>Upload</strong><span>Go to <code>Appearance → Themes → Add New → Upload Theme</code>. Select <code>pressgrid-v2.zip</code> and click Install Now.</span></div></li>
+    <li><div class="pg-step-num">1</div><div class="pg-step-body"><strong>Upload</strong><span>Go to <code>Appearance → Themes → Add New → Upload Theme</code>. Select <code>pressgrid-v2.5.0.zip</code> and click Install Now.</span></div></li>
     <li><div class="pg-step-num">2</div><div class="pg-step-body"><strong>Activate</strong><span>Click Activate on the theme page, or go to <code>Appearance → Themes</code>.</span></div></li>
     <li><div class="pg-step-num">3</div><div class="pg-step-body"><strong>Configure Colors</strong><span>Go to <code>Appearance → Customize → PressGrid: Colors</code> to adjust the default red/black palette.</span></div></li>
-    <li><div class="pg-step-num">4</div><div class="pg-step-body"><strong>Add Social Links</strong><span>Go to <code>Appearance → Customize → PressGrid: Social Media</code> and add your Facebook, X/Twitter, YouTube, and Instagram URLs.</span></div></li>
-    <li><div class="pg-step-num">5</div><div class="pg-step-body"><strong>Build Layout</strong><span>Go to <code>Appearance → Layout Builder</code> and configure homepage sections — including the new Opinion section.</span></div></li>
+    <li><div class="pg-step-num">4</div><div class="pg-step-body"><strong>Add Weather (optional)</strong><span>Go to <code>Appearance → Customize → PressGrid: Weather</code>. Add your free OpenWeatherMap API key and set your city.</span></div></li>
+    <li><div class="pg-step-num">5</div><div class="pg-step-body"><strong>Build Layout</strong><span>Go to <code>Appearance → Layout Builder</code>. If you assign a Business/Finance category to any section, the forex ticker activates automatically.</span></div></li>
     <li><div class="pg-step-num">6</div><div class="pg-step-body"><strong>Set Up Menus</strong><span>Go to <code>Appearance → Menus</code>. Assign menus to Primary, Footer, and Secondary locations.</span></div></li>
   </ol>
 
   <h3 class="pg-sub-header">Method 2 — WP-CLI</h3>
-  <pre><span class="fn">wp</span> <span class="kw">theme</span> install pressgrid-v2.zip --activate</pre>
+  <pre><span class="fn">wp</span> <span class="kw">theme</span> install pressgrid-v2.5.0.zip --activate</pre>
 
   <h3 class="pg-sub-header">Method 3 — FTP</h3>
   <pre><span class="cm"># Unzip and upload to:</span>
@@ -1041,49 +1181,55 @@ td code{font-size:.78em}
   <p class="pg-section-eyebrow">Architecture</p>
   <div class="pg-section-header"><h2 class="pg-section-title">File Structure</h2></div>
 <div class="pg-ftree"><span class="d">pressgrid/</span>
-├── <span class="f">style.css</span>                   <span class="c"># Theme header + complete CSS (~32KB)</span>
-├── <span class="f">functions.php</span>               <span class="c"># Setup, enqueue, transients, SEO, schema</span>
-├── <span class="f">header.php</span>                  <span class="c"># Top bar, masthead, sticky nav, breaking ticker</span>
+├── <span class="f">style.css</span>                   <span class="c"># Theme header + complete CSS (~22KB)</span>
+├── <span class="f">functions.php</span>               <span class="c"># Setup, enqueue, transients, SEO, preconnect</span>
+├── <span class="f">header.php</span>                  <span class="c"># Top bar, masthead, sticky nav, breaking/forex bar</span>
 ├── <span class="f">footer.php</span>                  <span class="c"># Widgets, nav, developer credit</span>
 ├── <span class="f">index.php</span>                   <span class="c"># Fallback archive template</span>
 ├── <span class="f">front-page.php</span>              <span class="c"># Layout Builder homepage</span>
-├── <span class="f">single.php</span>                  <span class="c"># Single post with author box</span>
+├── <span class="hi">single.php</span>                  <span class="c"># Single post — progress bar, share, related posts</span>
 ├── <span class="f">archive.php</span>                 <span class="c"># Category / tag / author archives</span>
 ├── <span class="f">page.php</span>                    <span class="c"># Static pages</span>
 ├── <span class="f">search.php</span>                  <span class="c"># Search results</span>
 ├── <span class="f">comments.php</span>                <span class="c"># Threaded comments + form</span>
-├── <span class="f">sidebar.php</span>                 <span class="c"># Sidebar: ad zones + newsletter + widgets</span>
+├── <span class="f">sidebar.php</span>                 <span class="c"># Sticky sidebar widget area</span>
 ├── <span class="f">404.php</span>                     <span class="c"># Custom 404 page</span>
+├── <span class="hi">API-GUIDE.md</span>                <span class="c"># Step-by-step API setup documentation</span>
 │
 ├── <span class="d">inc/</span>
 │   ├── <span class="f">security.php</span>            <span class="c"># Headers, XMLRPC toggle, font upload security</span>
-│   ├── <span class="f">customizer.php</span>          <span class="c"># Customizer controls + CSS variable output + social URLs</span>
+│   ├── <span class="f">customizer.php</span>          <span class="c"># Customizer controls + CSS variable output</span>
 │   ├── <span class="f">typography.php</span>          <span class="c"># Secure .woff2 upload admin page</span>
 │   ├── <span class="f">ads.php</span>                 <span class="c"># 6 ad zones, wp_kses sanitization, rendering</span>
-│   └── <span class="f">layout-builder.php</span>      <span class="c"># Layout Builder + Security settings admin pages</span>
+│   ├── <span class="f">layout-builder.php</span>      <span class="c"># Layout Builder + Security settings</span>
+│   ├── <span class="hi">weather.php</span>             <span class="c"># OpenWeatherMap integration + Customizer</span>
+│   └── <span class="hi">forex.php</span>               <span class="c"># Frankfurter ECB ticker + business detection</span>
 │
 ├── <span class="d">template-parts/</span>
 │   ├── <span class="d">content/</span>
-│   │   ├── <span class="hi">post-card.php</span>       <span class="c"># Reusable post card component</span>
+│   │   ├── <span class="f">post-card.php</span>       <span class="c"># Post card component (hover animation)</span>
 │   │   └── <span class="f">none.php</span>            <span class="c"># No results state</span>
 │   └── <span class="d">layout/</span>
-│       ├── <span class="hi">hero.php</span>            <span class="c"># Hero grid: 1 large left + 3 sidebar stack</span>
+│       ├── <span class="f">hero.php</span>            <span class="c"># Hero grid: 1 large left + 3 sidebar stack</span>
 │       ├── <span class="f">latest-posts.php</span>    <span class="c"># Latest posts — grid-2/3/4 or list</span>
 │       ├── <span class="f">category-grid.php</span>   <span class="c"># Category grid (transient cached)</span>
 │       ├── <span class="f">trending.php</span>        <span class="c"># 3-col tab block: Trending + Editor's Picks + Video</span>
-│       ├── <span class="f">editor-picks.php</span>    <span class="c"># Editor picks standalone fallback (cached 30min)</span>
-│       ├── <span class="hi">opinion.php</span>         <span class="c"># Opinion section — 2-col items with author avatar</span>
+│       ├── <span class="f">editor-picks.php</span>    <span class="c"># Editor picks standalone (cached 30min)</span>
+│       ├── <span class="f">opinion.php</span>         <span class="c"># Opinion section with author avatar</span>
 │       └── <span class="f">newsletter.php</span>      <span class="c"># Newsletter CTA section</span>
 │
 ├── <span class="d">assets/js/</span>
-│   ├── <span class="f">main.js</span>                 <span class="c"># Nav, lazy-load, a11y, smooth scroll (deferred)</span>
+│   ├── <span class="hi">main.js</span>                 <span class="c"># Nav, progress bar, share, back-to-top (deferred)</span>
 │   └── <span class="f">customizer-preview.js</span>   <span class="c"># Live CSS variable Customizer preview</span>
 │
 ├── <span class="d">languages/</span>
-│   └── <span class="f">pressgrid.pot</span>           <span class="c"># Translation template</span>
+│   ├── <span class="f">pressgrid.pot</span>           <span class="c"># Translation template (182 strings)</span>
+│   ├── <span class="hi">pressgrid-bg_BG.po/mo</span>  <span class="c"># Bulgarian (complete)</span>
+│   └── <span class="hi">pressgrid-en_GB.po/mo</span>  <span class="c"># English UK (complete)</span>
 │
 ├── <span class="f">screenshot.png</span>              <span class="c"># 880×660 theme screenshot</span>
 └── <span class="f">readme.txt</span>                  <span class="c"># WordPress.org compliant readme</span></div>
+  <p style="font-size:.78rem;color:var(--gray-400);margin-top:.5rem"><span style="color:var(--red);font-weight:700">Red</span> = new or changed in v2.5.0</p>
 </section>
 
 <hr class="pg-divider"/>
@@ -1096,7 +1242,7 @@ td code{font-size:.78em}
 
   <h3 class="pg-sub-header">Color Panel</h3>
   <div class="pg-table-wrap"><table>
-    <thead><tr><th>Setting</th><th>CSS Variable</th><th>Default (v2.0.0)</th></tr></thead>
+    <thead><tr><th>Setting</th><th>CSS Variable</th><th>Default</th></tr></thead>
     <tbody>
       <tr><td>Primary Color</td><td><code>--pg-primary</code></td><td><code>#cc0000</code></td></tr>
       <tr><td>Secondary Color</td><td><code>--pg-secondary</code></td><td><code>#990000</code></td></tr>
@@ -1131,7 +1277,7 @@ td code{font-size:.78em}
   </table></div>
 
   <h3 class="pg-sub-header">Typography</h3>
-  <p>PressGrid v2.0.0 ships with a full editorial font stack loaded from Google Fonts. Three font roles are defined as CSS custom properties:</p>
+  <p>PressGrid ships with a full editorial font stack loaded from Google Fonts. Three font roles are defined as CSS custom properties:</p>
   <div class="pg-table-wrap"><table>
     <thead><tr><th>Variable</th><th>Font</th><th>Used For</th></tr></thead>
     <tbody>
@@ -1149,7 +1295,7 @@ td code{font-size:.78em}
   <p class="pg-section-eyebrow">Appearance → Layout Builder</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Layout Builder</h2></div>
   <p>Configure the homepage at <code>Appearance → Layout Builder</code>. Each section can be independently enabled, assigned a layout type, source category, and post count.</p>
-  <div class="pg-note info"><span class="pg-note-icon">💡</span><div class="pg-note-body"><strong>Transient Cache</strong>Saving layout settings automatically clears all PressGrid transients so the new configuration takes effect immediately.</div></div>
+  <div class="pg-note info"><span class="pg-note-icon">💡</span><div class="pg-note-body"><strong>Forex Tip</strong>Assign a Business or Finance category to any section — the Breaking News ticker in the top bar will automatically switch to the Frankfurter ECB forex ticker. No other configuration needed.</div></div>
 
   <h3 class="pg-sub-header">Available Sections</h3>
   <div class="pg-table-wrap"><table>
@@ -1160,13 +1306,12 @@ td code{font-size:.78em}
       <tr><td><code>category_grid</code></td><td>grid-4</td><td>On</td><td>Posts from a specific category (transient cached)</td></tr>
       <tr><td><code>trending</code></td><td>list</td><td>On</td><td>3-column tab block: Trending Now + Editor's Picks + Video</td></tr>
       <tr><td><code>editor_picks</code></td><td>grid-4</td><td>Off</td><td>Standalone editor picks grid, random, 30-min cache</td></tr>
-      <tr><td><code>opinion</code></td><td>grid-2</td><td>On</td><td>2-column opinion items with author avatar — <strong>new in v2</strong></td></tr>
+      <tr><td><code>opinion</code></td><td>grid-2</td><td>On</td><td>2-column opinion items with author avatar</td></tr>
       <tr><td><code>newsletter</code></td><td>newsletter</td><td>On</td><td>Full-width newsletter CTA section</td></tr>
       <tr><td><code>custom_html</code></td><td>custom_html</td><td>Off</td><td>Free-form HTML (wp_kses_post sanitized)</td></tr>
       <tr><td><code>ad_block</code></td><td>ad_block</td><td>Off</td><td>Renders the between-posts ad zone inline</td></tr>
     </tbody>
   </table></div>
-  <div class="pg-note info"><span class="pg-note-icon">📘</span><div class="pg-note-body"><strong>Trending Section in v2</strong>The <code>trending</code> section now renders as a combined 3-column tab block — Trending Now, Editor's Picks, and a Video feature. <code>editor_picks</code> remains available as a standalone fallback if trending is disabled.</div></div>
 </section>
 
 <hr class="pg-divider"/>
@@ -1176,25 +1321,207 @@ td code{font-size:.78em}
   <p class="pg-section-eyebrow">Appearance → Theme Ads</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Advertisement System</h2></div>
   <p>Manage all ad placements at <code>Appearance → Theme Ads</code>. Each zone is independently configurable with HTML or ad network tags.</p>
-
-  <h3 class="pg-sub-header">Ad Zones</h3>
   <div class="pg-table-wrap"><table>
     <thead><tr><th>Zone ID</th><th>Location</th><th>Typical Size</th></tr></thead>
     <tbody>
       <tr><td><code>header</code></td><td>Below sticky navigation</td><td>728×90</td></tr>
-      <tr><td><code>sidebar_top</code></td><td>Top of sidebar — above primary widget area</td><td>300×250</td></tr>
+      <tr><td><code>sidebar_top</code></td><td>Top of sidebar</td><td>300×250</td></tr>
       <tr><td><code>sidebar_middle</code></td><td>Between sidebar widget areas</td><td>300×250 or 300×600</td></tr>
       <tr><td><code>in_article</code></td><td>Above article content on single posts</td><td>Responsive</td></tr>
       <tr><td><code>between_posts</code></td><td>Homepage Ad Block section</td><td>Responsive</td></tr>
       <tr><td><code>footer</code></td><td>Above site footer</td><td>728×90</td></tr>
     </tbody>
   </table></div>
-
   <h3 class="pg-sub-header">Rendering in Templates</h3>
   <pre><span class="fn">pressgrid_render_ad</span>( <span class="str">'sidebar_top'</span> );
-<span class="fn">pressgrid_render_ad</span>( <span class="str">'header'</span> );
+<span class="fn">pressgrid_render_ad</span>( <span class="str">'in_article'</span> );
 <span class="fn">pressgrid_render_ad</span>( <span class="str">'footer'</span> );</pre>
   <div class="pg-note danger"><span class="pg-note-icon">🔒</span><div class="pg-note-body"><strong>Security</strong>All ad HTML runs through <code>wp_kses()</code> with a strict allowed-tags whitelist. Desktop/mobile visibility is handled with <code>.pg-ad-desktop-only</code> / <code>.pg-ad-mobile-only</code> CSS classes.</div></div>
+</section>
+
+<hr class="pg-divider"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     NEW IN v2.5 — WEATHER WIDGET
+     ═══════════════════════════════════════════════════════ -->
+<section class="pg-section" id="weather">
+  <p class="pg-section-eyebrow">New in v2.5 · Appearance → Customize → PressGrid: Weather</p>
+  <div class="pg-section-header">
+    <h2 class="pg-section-title">Weather Widget <span class="pg-new-badge">v2.5</span></h2>
+  </div>
+  <p>Powered by <strong>OpenWeatherMap</strong>. Displays current conditions and a 5-day forecast in the sidebar, plus a compact mini widget in the top bar. Visitors can tap the geolocation button to see their local weather. All data is fetched server-side and cached — the visitor's browser never contacts OpenWeatherMap directly.</p>
+
+  <div class="pg-note warn"><span class="pg-note-icon">⚠️</span><div class="pg-note-body"><strong>Free API Key Required</strong>Register at <a href="https://openweathermap.org" target="_blank" rel="noopener">openweathermap.org</a> — the free tier (1,000 req/day) is more than sufficient. New keys activate after 10–15 minutes.</div></div>
+
+  <h3 class="pg-sub-header">Configuration</h3>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th>Setting</th><th>Where</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>API Key</td><td>Customize → Weather</td><td><code>a1b2c3d4e5f6...</code></td></tr>
+      <tr><td>City</td><td>Customize → Weather</td><td><code>Sofia,BG</code> or <code>London,GB</code></td></tr>
+      <tr><td>Units</td><td>Customize → Weather</td><td><code>metric</code> (°C) or <code>imperial</code> (°F)</td></tr>
+      <tr><td>Sidebar widget</td><td>Customize → Weather</td><td>Enable / Disable</td></tr>
+      <tr><td>Top bar mini widget</td><td>Customize → Weather</td><td>Enable / Disable</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="pg-sub-header">What the Sidebar Widget Shows</h3>
+  <ul>
+    <li><strong>Current:</strong> City name, description, icon, temperature, feels like, hi/lo</li>
+    <li><strong>Details:</strong> Humidity, wind speed, cloud cover</li>
+    <li><strong>Forecast:</strong> 5 days with daily icon and temperature</li>
+    <li><strong>Geolocation:</strong> ⊕ button — asks browser permission, updates widget live, no data stored</li>
+  </ul>
+
+  <h3 class="pg-sub-header">Cache &amp; API Usage</h3>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th>Data</th><th>Cache TTL</th><th>Requests/day</th></tr></thead>
+    <tbody>
+      <tr><td>Current conditions</td><td>30 minutes</td><td>~48</td></tr>
+      <tr><td>5-day forecast</td><td>1 hour</td><td>~24</td></tr>
+      <tr><td>Free tier limit</td><td>—</td><td>1,000</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="pg-sub-header">Endpoints Used</h3>
+  <pre><span class="cm"># Current weather</span>
+GET https://api.openweathermap.org/data/2.5/weather
+    ?q=Sofia,BG&amp;appid=YOUR_KEY&amp;units=metric
+
+<span class="cm"># 5-day forecast</span>
+GET https://api.openweathermap.org/data/2.5/forecast
+    ?q=Sofia,BG&amp;appid=YOUR_KEY&amp;units=metric&amp;cnt=40</pre>
+</section>
+
+<hr class="pg-divider"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     NEW IN v2.5 — FOREX TICKER
+     ═══════════════════════════════════════════════════════ -->
+<section class="pg-section" id="forex">
+  <p class="pg-section-eyebrow">New in v2.5 · Appearance → Customize → PressGrid: Currencies</p>
+  <div class="pg-section-header">
+    <h2 class="pg-section-title">Forex Ticker <span class="pg-new-badge">v2.5</span></h2>
+  </div>
+  <p>Powered by <strong>Frankfurter</strong> — free, open-source, European Central Bank data. <strong>No API key required.</strong> The ticker automatically replaces the Breaking News bar when the Layout Builder has an active section targeting a Business or Finance category.</p>
+
+  <div class="pg-note success"><span class="pg-note-icon">✅</span><div class="pg-note-body"><strong>Zero Configuration</strong>Create a category with slug <code>business</code>, <code>finance</code>, <code>economy</code>, or similar. Assign it to a Layout Builder section. The ticker activates automatically — no API key, no further settings required.</div></div>
+
+  <h3 class="pg-sub-header">How the Auto-Detection Works</h3>
+  <p>On every page load, <code>pressgrid_has_business_section()</code> checks all active Layout Builder sections for a category slug matching the built-in list. If found, the forex ticker is rendered in place of Breaking News. The result is cached for 5 minutes.</p>
+
+  <h3 class="pg-sub-header">Auto-Detected Category Slugs</h3>
+  <pre><span class="str">business</span>, <span class="str">biznes</span>, <span class="str">бизнес</span>,
+<span class="str">finance</span>, <span class="str">finances</span>, <span class="str">finansi</span>, <span class="str">финанси</span>,
+<span class="str">economy</span>, <span class="str">ikonomika</span>, <span class="str">икономика</span>,
+<span class="str">markets</span>, <span class="str">pazari</span>, <span class="str">пазари</span>,
+<span class="str">money</span>, <span class="str">pari</span>, <span class="str">пари</span></pre>
+
+  <h3 class="pg-sub-header">Customizer Settings</h3>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>Base currency</td><td><code>EUR</code></td><td>Rates are calculated from this currency</td></tr>
+      <tr><td>Target currencies</td><td><code>USD,GBP,BGN,CHF,JPY</code></td><td>Comma-separated ISO 4217 codes</td></tr>
+      <tr><td>Business category slug</td><td>auto-detect</td><td>Override only if your slug is non-standard</td></tr>
+      <tr><td>Always show</td><td>false</td><td>Force ticker on regardless of Layout Builder</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="pg-sub-header">API Details</h3>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tbody>
+      <tr><td>Data source</td><td>European Central Bank via frankfurter.app</td></tr>
+      <tr><td>API key required</td><td>No</td></tr>
+      <tr><td>Update frequency</td><td>Once per day (weekdays ~16:00 CET)</td></tr>
+      <tr><td>Cache TTL</td><td>6 hours (~4 requests/day)</td></tr>
+      <tr><td>Rate limit</td><td>None for normal usage</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="pg-sub-header">Endpoint &amp; Response</h3>
+  <pre>GET https://api.frankfurter.app/latest?from=EUR&amp;to=USD,GBP,BGN,CHF,JPY
+
+<span class="kw">{</span>
+  <span class="prop">"base"</span>: <span class="str">"EUR"</span>,
+  <span class="prop">"date"</span>: <span class="str">"2025-03-07"</span>,
+  <span class="prop">"rates"</span>: <span class="kw">{</span>
+    <span class="prop">"BGN"</span>: <span class="num">1.9558</span>, <span class="prop">"CHF"</span>: <span class="num">0.9305</span>,
+    <span class="prop">"GBP"</span>: <span class="num">0.8351</span>, <span class="prop">"USD"</span>: <span class="num">1.0823</span>
+  <span class="kw">}</span>
+<span class="kw">}</span></pre>
+</section>
+
+<hr class="pg-divider"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     NEW IN v2.5 — SINGLE POST UX
+     ═══════════════════════════════════════════════════════ -->
+<section class="pg-section" id="single-post">
+  <p class="pg-section-eyebrow">New in v2.5 · single.php</p>
+  <div class="pg-section-header">
+    <h2 class="pg-section-title">Single Post UX <span class="pg-new-badge">v2.5</span></h2>
+  </div>
+  <p>Five reader experience enhancements added to every single post. All implemented in vanilla JS — zero external scripts, zero SDKs, zero third-party requests from the browser.</p>
+
+  <h3 class="pg-sub-header">Reading Progress Bar</h3>
+  <p>A 3px red line at the top of the viewport tracks reading progress as the user scrolls. Only activates on <code>single-post</code> pages (detected via <code>body</code> class). Implemented in <code>main.js</code> and styled in <code>style.css</code>. Marked <code>aria-hidden="true"</code> as it is decorative.</p>
+
+  <h3 class="pg-sub-header">Estimated Read Time</h3>
+  <p>Displayed in post meta alongside author and date. Calculated server-side in <code>functions.php</code>:</p>
+  <pre><span class="fn">str_word_count</span>( wp_strip_all_tags( $content ) ) / <span class="num">200</span>
+<span class="cm"># Returns minimum 1 minute, rounded up</span></pre>
+
+  <h3 class="pg-sub-header">Native Share Buttons</h3>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th>Button</th><th>Mechanism</th><th>Fallback</th></tr></thead>
+    <tbody>
+      <tr><td>Share ↗</td><td>Web Share API (mobile/desktop)</td><td>Hidden if not supported by browser</td></tr>
+      <tr><td>Copy link 🔗</td><td><code>navigator.clipboard</code></td><td><code>document.execCommand('copy')</code></td></tr>
+      <tr><td>LinkedIn</td><td>Plain <code>&lt;a href&gt;</code> link</td><td>Always available, no JS needed</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="pg-sub-header">Related Posts</h3>
+  <p>3 posts from the same category shown after the article content. Uses a standard <code>WP_Query</code> with <code>orderby=rand</code> and <code>post__not_in</code> to exclude the current post. No plugin required. Only rendered if the current post has at least one category with other matching posts.</p>
+
+  <h3 class="pg-sub-header">Back-to-Top Button</h3>
+  <p>A fixed button (bottom-right) that appears after 400px of scroll and smoothly scrolls to the top. ~10 lines of JS, pure CSS styling, injected before <code>get_footer()</code> in <code>single.php</code>.</p>
+</section>
+
+<hr class="pg-divider"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     NEW IN v2.5 — API REFERENCE
+     ═══════════════════════════════════════════════════════ -->
+<section class="pg-section" id="apis">
+  <p class="pg-section-eyebrow">New in v2.5 · External Services</p>
+  <div class="pg-section-header"><h2 class="pg-section-title">API Reference <span class="pg-new-badge">v2.5</span></h2></div>
+  <p>All external API calls are made <strong>server-side</strong> via PHP <code>wp_remote_get()</code>. The visitor's browser never contacts these services directly. Data is stored as WordPress transients.</p>
+
+  <div class="pg-api-grid">
+    <div class="pg-api-card">
+      <div class="pg-api-card-title">Google Fonts</div>
+      <span class="pg-api-card-badge free">✓ No key required</span>
+      <div class="pg-api-card-body">Playfair Display, Barlow Condensed, Barlow via <code>@import</code> in CSS. For self-hosting, upload <code>.woff2</code> files via Font Upload.</div>
+      <a class="pg-api-card-link" href="https://fonts.google.com" target="_blank" rel="noopener">fonts.google.com ↗</a>
+    </div>
+    <div class="pg-api-card">
+      <div class="pg-api-card-title">OpenWeatherMap</div>
+      <span class="pg-api-card-badge key">⚿ Free key required</span>
+      <div class="pg-api-card-body">Weather widget. Free tier: 1,000 req/day. Cache: 30 min / 1 hr. Key ready in 15 minutes after registration.</div>
+      <a class="pg-api-card-link" href="https://openweathermap.org/api" target="_blank" rel="noopener">openweathermap.org/api ↗</a>
+    </div>
+    <div class="pg-api-card">
+      <div class="pg-api-card-title">Frankfurter (ECB)</div>
+      <span class="pg-api-card-badge free">✓ No key required</span>
+      <div class="pg-api-card-body">ECB exchange rates. Completely free, open-source. Cache: 6 hours (~4 req/day). Updates daily on weekdays.</div>
+      <a class="pg-api-card-link" href="https://www.frankfurter.app/docs" target="_blank" rel="noopener">frankfurter.app/docs ↗</a>
+    </div>
+  </div>
+
+  <div class="pg-note info"><span class="pg-note-icon">📘</span><div class="pg-note-body"><strong>Full Setup Guide</strong>See <code>API-GUIDE.md</code> in the theme root for step-by-step registration instructions, endpoint documentation, and GDPR notes for each API.</div></div>
 </section>
 
 <hr class="pg-divider"/>
@@ -1203,7 +1530,7 @@ td code{font-size:.78em}
 <section class="pg-section" id="typography">
   <p class="pg-section-eyebrow">Appearance → Font Upload</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Typography</h2></div>
-  <p>PressGrid v2.0.0 ships with a complete editorial Google Fonts stack. For custom brand fonts, upload a <code>.woff2</code> file via <code>Appearance → Font Upload</code>.</p>
+  <p>PressGrid ships with a complete editorial Google Fonts stack. For custom brand fonts, upload a <code>.woff2</code> file via <code>Appearance → Font Upload</code>.</p>
 
   <h3 class="pg-sub-header">Secure Upload Process</h3>
   <ol class="pg-steps">
@@ -1235,12 +1562,11 @@ td code{font-size:.78em}
   <div class="pg-table-wrap"><table>
     <thead><tr><th>Widget Area</th><th>ID</th><th>Location</th></tr></thead>
     <tbody>
-      <tr><td>Primary Sidebar</td><td><code>sidebar-1</code></td><td>Renders above the built-in newsletter widget</td></tr>
-      <tr><td>Secondary Sidebar</td><td><code>sidebar-2</code></td><td>Renders below the built-in newsletter widget</td></tr>
+      <tr><td>Primary Sidebar</td><td><code>sidebar-1</code></td><td>Main sidebar — sticky on desktop</td></tr>
+      <tr><td>Secondary Sidebar</td><td><code>sidebar-2</code></td><td>Below primary sidebar</td></tr>
       <tr><td>Footer Column 1–4</td><td><code>footer-1…footer-4</code></td><td>4-column footer widget grid</td></tr>
     </tbody>
   </table></div>
-  <div class="pg-note info"><span class="pg-note-icon">ℹ️</span><div class="pg-note-body"><strong>Built-in Sidebar Newsletter</strong>The <code>sidebar.php</code> template ships with a hardcoded email input and Subscribe button between widget areas — no plugin required.</div></div>
 </section>
 
 <hr class="pg-divider"/>
@@ -1252,9 +1578,17 @@ td code{font-size:.78em}
   <div class="pg-perf-grid">
     <div class="pg-perf-box"><div class="pg-perf-num red">95+</div><div class="pg-perf-label">Lighthouse Score</div><div class="pg-perf-sub">Performance target</div></div>
     <div class="pg-perf-box"><div class="pg-perf-num black">0</div><div class="pg-perf-label">Render-Blocking JS</div><div class="pg-perf-sub">All scripts deferred</div></div>
-    <div class="pg-perf-box"><div class="pg-perf-num red">~32KB</div><div class="pg-perf-label">CSS Size</div><div class="pg-perf-sub">No framework overhead</div></div>
-    <div class="pg-perf-box"><div class="pg-perf-num black">Low</div><div class="pg-perf-label">CLS Score</div><div class="pg-perf-sub">Explicit image dimensions</div></div>
+    <div class="pg-perf-box"><div class="pg-perf-num red">~22KB</div><div class="pg-perf-label">CSS Size</div><div class="pg-perf-sub">No framework overhead</div></div>
+    <div class="pg-perf-box"><div class="pg-perf-num black">0</div><div class="pg-perf-label">External JS</div><div class="pg-perf-sub">100% vanilla JS</div></div>
   </div>
+
+  <h3 class="pg-sub-header">v2.5 Performance Additions</h3>
+  <ul>
+    <li><strong>Preconnect hints</strong> — <code>&lt;link rel="preconnect"&gt;</code> for Google Fonts, OpenWeatherMap, and Frankfurter added conditionally only when those features are active. Saves 100–200ms on first external connection.</li>
+    <li><strong>Sticky sidebar</strong> — <code>position:sticky</code>, no JS needed</li>
+    <li><strong>Card hover animations</strong> — pure CSS <code>translateY(-3px)</code> + box-shadow, no JS</li>
+    <li><strong>fetchpriority="high"</strong> on hero image for LCP optimization</li>
+  </ul>
 
   <h3 class="pg-sub-header">Transient Cache Strategy</h3>
   <div class="pg-table-wrap"><table>
@@ -1264,6 +1598,9 @@ td code{font-size:.78em}
       <tr><td><code>pressgrid_trending_posts</code></td><td>10 min</td><td>save_post / delete_post</td></tr>
       <tr><td><code>pressgrid_cat_grid_{id}</code></td><td>5 min</td><td>Per-category on post save</td></tr>
       <tr><td><code>pressgrid_editor_picks</code></td><td>30 min</td><td>save_post / delete_post</td></tr>
+      <tr><td><code>pressgrid_weather_*</code></td><td>30 min / 1 hr</td><td>customize_save_after</td></tr>
+      <tr><td><code>pressgrid_forex_*</code></td><td>6 hours</td><td>customize_save_after</td></tr>
+      <tr><td><code>pressgrid_has_biz_section</code></td><td>5 min</td><td>Layout sections option update</td></tr>
     </tbody>
   </table></div>
 
@@ -1273,7 +1610,6 @@ td code{font-size:.78em}
     <li><strong>no_found_rows: true</strong> — Skips SQL_CALC_FOUND_ROWS on cached queries</li>
     <li><strong>Post ID caching</strong> — Only IDs stored in transients, query reconstructed from cache</li>
     <li><strong>Indexed columns only</strong> — No meta_query on unindexed keys</li>
-    <li><strong>Pagination everywhere</strong> — No unbounded loops on archive templates</li>
   </ul>
 </section>
 
@@ -1294,8 +1630,10 @@ td code{font-size:.78em}
     <li><span class="pg-check">✓</span>Login error messages genericized to prevent username enumeration</li>
     <li><span class="pg-check">✓</span>No eval(), no direct DB queries, no obfuscated code</li>
     <li><span class="pg-check">✓</span>Direct file access blocked: if(!defined('ABSPATH')) exit; in every PHP file</li>
-    <li><span class="pg-check">✓</span>Optional XML-RPC disable at <code>Appearance → Theme Security</code></li>
+    <li><span class="pg-check">✓</span>Optional XML-RPC disable at Appearance → Theme Security</li>
     <li><span class="pg-check">✓</span>All functions prefixed pressgrid_ — no global namespace pollution</li>
+    <li><span class="pg-check">✓</span>All external API calls server-side only (wp_remote_get) — browser never contacts APIs directly</li>
+    <li><span class="pg-check">✓</span>Weather geolocation: browser Geolocation API, user consent required, no location data stored</li>
   </ul>
   <h3 class="pg-sub-header">Security Headers</h3>
   <pre><span class="var">X-Content-Type-Options</span>: <span class="str">nosniff</span>
@@ -1317,7 +1655,8 @@ td code{font-size:.78em}
   <span class="prop">"@context"</span>: <span class="str">"https://schema.org"</span>,
   <span class="prop">"@type"</span>: <span class="str">"NewsArticle"</span>,
   <span class="prop">"headline"</span>: <span class="str">"Article title"</span>,
-  <span class="prop">"datePublished"</span>: <span class="str">"2024-01-01T00:00:00+00:00"</span>,
+  <span class="prop">"datePublished"</span>: <span class="str">"2025-01-01T00:00:00+00:00"</span>,
+  <span class="prop">"dateModified"</span>: <span class="str">"2025-01-02T00:00:00+00:00"</span>,
   <span class="prop">"author"</span>: <span class="kw">{</span> <span class="prop">"@type"</span>: <span class="str">"Person"</span> <span class="kw">}</span>,
   <span class="prop">"publisher"</span>: <span class="kw">{</span> <span class="prop">"@type"</span>: <span class="str">"Organization"</span> <span class="kw">}</span>
 <span class="kw">}</span></pre>
@@ -1326,9 +1665,9 @@ td code{font-size:.78em}
     <li>Open Graph: og:title, og:description, og:image, og:type, og:site_name</li>
     <li>Twitter Cards: summary_large_image with auto-featured image</li>
     <li>Canonical &lt;link&gt; tag on every page</li>
-    <li>Semantic HTML5: header, main, article, nav, aside, footer</li>
-    <li>Post reading time estimation in meta</li>
     <li>Breadcrumb navigation with schema-ready markup</li>
+    <li>Semantic HTML5: header, main, article, nav, aside, footer</li>
+    <li>Reading time estimation shown in post meta</li>
   </ul>
 </section>
 
@@ -1339,14 +1678,29 @@ td code{font-size:.78em}
   <p class="pg-section-eyebrow">Developer API</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Hooks &amp; Public Functions</h2></div>
   <h3 class="pg-sub-header">Key Public Functions</h3>
-  <pre><span class="fn">pressgrid_breadcrumbs</span>();
-<span class="fn">pressgrid_post_meta</span>( <span class="var">$post_id</span> );
+  <pre><span class="cm"># Template functions</span>
+<span class="fn">pressgrid_breadcrumbs</span>();
+<span class="fn">pressgrid_post_meta</span>( <span class="var">$post_id</span> );       <span class="cm"># author, date, read time</span>
 <span class="fn">pressgrid_render_ad</span>( <span class="str">'sidebar_top'</span> );
 <span class="fn">pressgrid_get_category_label</span>( <span class="var">$post_id</span> );
+
+<span class="cm"># Cached queries</span>
 <span class="var">$q</span> = <span class="fn">pressgrid_get_hero_posts</span>( <span class="num">4</span> );
 <span class="var">$q</span> = <span class="fn">pressgrid_get_trending_posts</span>( <span class="num">6</span> );
 <span class="var">$q</span> = <span class="fn">pressgrid_get_editor_picks</span>( <span class="num">4</span> );
-<span class="var">$q</span> = <span class="fn">pressgrid_get_category_posts</span>( <span class="var">$cat_id</span>, <span class="num">4</span> );</pre>
+<span class="var">$q</span> = <span class="fn">pressgrid_get_category_posts</span>( <span class="var">$cat_id</span>, <span class="num">4</span> );
+
+<span class="cm"># v2.5 — Weather</span>
+<span class="var">$weather</span>  = <span class="fn">pressgrid_get_weather</span>();
+<span class="var">$forecast</span> = <span class="fn">pressgrid_get_forecast</span>();
+
+<span class="cm"># v2.5 — Forex</span>
+<span class="var">$has_biz</span> = <span class="fn">pressgrid_has_business_section</span>();
+<span class="var">$rates</span>   = <span class="fn">pressgrid_get_forex_rates</span>();
+
+<span class="cm"># v2.5 — Read time</span>
+<span class="var">$mins</span> = <span class="fn">pressgrid_reading_time</span>( <span class="var">$post_id</span> );</pre>
+
   <h3 class="pg-sub-header">Filters</h3>
   <div class="pg-table-wrap"><table>
     <thead><tr><th>Filter</th><th>Default</th><th>Description</th></tr></thead>
@@ -1364,8 +1718,14 @@ td code{font-size:.78em}
 <section class="pg-section" id="translation">
   <p class="pg-section-eyebrow">i18n / l10n</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Translation</h2></div>
-  <p>All user-facing strings use text domain <code>pressgrid</code>. A <code>.pot</code> template is included in <code>/languages/</code>.</p>
-  <h3 class="pg-sub-header">WP-CLI</h3>
+  <p>Text domain: <code>pressgrid</code>. The <code>.pot</code> template (182 strings) is in <code>/languages/</code>. Two translations ship with the theme:</p>
+  <div class="pg-table-wrap"><table>
+    <thead><tr><th>Locale</th><th>File</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><code>bg_BG</code></td><td>pressgrid-bg_BG.po/mo</td><td>Complete (182 strings)</td></tr>
+      <tr><td><code>en_GB</code></td><td>pressgrid-en_GB.po/mo</td><td>Complete</td></tr>
+    </tbody>
+  </table></div>
   <pre><span class="cm"># Generate fresh POT file</span>
 <span class="fn">wp</span> i18n make-pot . languages/pressgrid.pot --domain=pressgrid
 
@@ -1405,12 +1765,14 @@ td code{font-size:.78em}
 <section class="pg-section" id="caching">
   <p class="pg-section-eyebrow">Infrastructure</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Caching</h2></div>
-  <div class="pg-note success"><span class="pg-note-icon">✅</span><div class="pg-note-body"><strong>Full Compatibility</strong>Works with WP Super Cache, W3TC, LiteSpeed, WP Rocket, Redis, and Memcached.</div></div>
+  <div class="pg-note success"><span class="pg-note-icon">✅</span><div class="pg-note-body"><strong>Full Compatibility</strong>Works with WP Super Cache, W3TC, LiteSpeed, WP Rocket, Redis, and Memcached. When a persistent object cache is active, set_transient() automatically uses it.</div></div>
   <h3 class="pg-sub-header">Manual Cache Clear</h3>
   <pre><span class="fn">delete_transient</span>( <span class="str">'pressgrid_hero_posts'</span> );
 <span class="fn">delete_transient</span>( <span class="str">'pressgrid_trending_posts'</span> );
 <span class="fn">delete_transient</span>( <span class="str">'pressgrid_editor_picks'</span> );
-<span class="fn">delete_transient</span>( <span class="str">'pressgrid_cat_grid_'</span> . <span class="var">$cat_id</span> );</pre>
+<span class="fn">delete_transient</span>( <span class="str">'pressgrid_cat_grid_'</span> . <span class="var">$cat_id</span> );
+<span class="fn">delete_transient</span>( <span class="str">'pressgrid_has_biz_section'</span> );
+<span class="cm"># Weather and forex transients cleared automatically via customize_save_after</span></pre>
 </section>
 
 <hr class="pg-divider"/>
@@ -1420,27 +1782,51 @@ td code{font-size:.78em}
   <p class="pg-section-eyebrow">History</p>
   <div class="pg-section-header"><h2 class="pg-section-title">Changelog</h2></div>
 
+  <!-- v2.5.0 -->
   <div class="pg-changelog-version">
-    <span class="pg-cl-ver">v2.0.0</span>
+    <span class="pg-cl-ver">v2.5.0</span>
     <span class="pg-cl-label">Latest</span>
+    <span style="font-size:.78rem;color:#999;font-family:'Barlow',Arial,sans-serif">Reading UX · Weather · Forex · SEO</span>
+  </div>
+  <ul class="pg-changelog-items">
+    <li><strong>New — Frankfurter forex ticker</strong> Auto-activates when Layout Builder has a Business/Finance section. No API key required. ECB data, 6-hour cache.</li>
+    <li><strong>New — OpenWeatherMap weather widget</strong> Sidebar widget + top bar mini widget, 5-day forecast, browser geolocation support.</li>
+    <li><strong>New — Reading progress bar</strong> Thin red line at top of viewport on single posts only.</li>
+    <li><strong>New — Estimated read time</strong> Calculated from word count, shown in post meta.</li>
+    <li><strong>New — Native share buttons</strong> Web Share API + copy-to-clipboard + LinkedIn. Zero external JS or SDKs.</li>
+    <li><strong>New — Related posts</strong> 3 posts from same category after article content. No plugin required.</li>
+    <li><strong>New — Back-to-top button</strong> Appears at 400px scroll, smooth scroll.</li>
+    <li><strong>New — Sticky sidebar</strong> position:sticky, no JS needed.</li>
+    <li><strong>New — Card hover animations</strong> translateY(-3px) + box-shadow, pure CSS.</li>
+    <li><strong>New — Open Graph + Twitter Card</strong> Full social meta tags on all page types.</li>
+    <li><strong>New — NewsArticle JSON-LD</strong> Schema markup on all single posts.</li>
+    <li><strong>New — Breadcrumb navigation</strong> Semantic, accessible, schema-ready.</li>
+    <li><strong>New — Preconnect hints</strong> Google Fonts, OpenWeatherMap, Frankfurter (conditional).</li>
+    <li><strong>New — API-GUIDE.md</strong> Step-by-step documentation for all three APIs.</li>
+    <li><strong>New — bg_BG + en_GB translations</strong> 182 strings, compiled .mo files included.</li>
+    <li><strong>Improved — pressgrid_post_meta()</strong> Now includes read time and modified date.</li>
+  </ul>
+
+  <!-- v2.0.0 -->
+  <div class="pg-changelog-version" style="margin-top:1.5rem">
+    <span class="pg-cl-ver">v2.0.0</span>
+    <span class="pg-cl-label old">Previous</span>
     <span style="font-size:.78rem;color:#999;font-family:'Barlow',Arial,sans-serif">Newspaper Design Overhaul</span>
   </div>
   <ul class="pg-changelog-items">
-    <li><strong>New design system</strong> — Classic newspaper aesthetic: black/white/red palette (<code>#cc0000</code> primary, <code>#1a1a1a</code> black), replacing previous blue-accent palette</li>
-    <li><strong>Font stack</strong> — Playfair Display (headings) + Barlow Condensed (UI/nav) + Barlow (body) via Google Fonts</li>
-    <li><strong>Top bar</strong> — New black strip with current date left and social icon links right; URLs configurable in Customizer</li>
-    <li><strong>Masthead</strong> — Centered newspaper-style logo with split-colour name and em-dash tagline</li>
-    <li><strong>Hero section</strong> — Rebuilt as 3:2 newspaper grid: full-bleed image with gradient overlay caption left, three thumbnail sidebar items right</li>
-    <li><strong>Trending section</strong> — Rebuilt as 3-column tab block combining Trending Now, Editor's Picks, and Video in a single bordered unit</li>
-    <li><strong>Opinion section</strong> — New Layout Builder section: 2-column grid with post image, title, and author byline with red arrow</li>
-    <li><strong>Sidebar</strong> — New <code>sidebar.php</code> template with ad zones, primary/secondary widget areas, and built-in newsletter email widget</li>
-    <li><strong>Social Media Customizer panel</strong> — New <code>pressgrid_social</code> section for Facebook, X/Twitter, YouTube, Instagram URLs</li>
-    <li><strong>CSS overhaul</strong> — Full rewrite (~32KB) using newspaper-appropriate spacing, typography scale, and CSS custom properties</li>
-    <li><strong>Footer</strong> — Black background, 4px red top border, 4-column widget grid</li>
-    <li><strong>Layout Builder expanded</strong> — 8 → 9 sections with the addition of <code>opinion</code></li>
-    <li><strong>Color defaults updated</strong> — All Customizer defaults reflect the new newspaper palette</li>
+    <li><strong>New design system</strong> Classic newspaper aesthetic: black/white/red palette, replacing previous blue-accent palette</li>
+    <li><strong>Font stack</strong> Playfair Display (headings) + Barlow Condensed (UI) + Barlow (body) via Google Fonts</li>
+    <li><strong>Top bar</strong> Black strip with current date and social icon links; URLs configurable in Customizer</li>
+    <li><strong>Masthead</strong> Centered newspaper-style logo with split-colour name and em-dash tagline</li>
+    <li><strong>Hero section</strong> Rebuilt as 3:2 newspaper grid: full-bleed image left, three thumbnail sidebar items right</li>
+    <li><strong>Trending section</strong> Rebuilt as 3-column tab block: Trending Now, Editor's Picks, and Video</li>
+    <li><strong>Opinion section</strong> New Layout Builder section: 2-column grid with author byline</li>
+    <li><strong>Social Media Customizer panel</strong> Facebook, X/Twitter, YouTube, Instagram URLs</li>
+    <li><strong>Layout Builder expanded</strong> 8 → 9 sections with the addition of opinion</li>
+    <li><strong>CSS overhaul</strong> Full rewrite using newspaper-appropriate typography scale and CSS custom properties</li>
   </ul>
 
+  <!-- v1.0.0 -->
   <div class="pg-changelog-version" style="margin-top:1.5rem">
     <span class="pg-cl-ver">v1.0.0</span>
     <span class="pg-cl-label old">Initial Release</span>
@@ -1449,7 +1835,6 @@ td code{font-size:.78em}
     <li>Full theme architecture: Layout Builder, Ad Zones, Customizer</li>
     <li>Security hardening: headers, MIME validation, nonces, escaping throughout</li>
     <li>Transient caching for hero, trending, category, editor picks</li>
-    <li>NewsArticle schema, Open Graph, Twitter Cards</li>
     <li>Vanilla JS: nav, lazy load, dropdowns, smooth scroll</li>
     <li>WCAG 2.1 AA accessibility compliance</li>
     <li>WordPress.org Theme Review guidelines compliance</li>
@@ -1475,7 +1860,7 @@ td code{font-size:.78em}
 <!-- ═══ FOOTER ═══ -->
 <footer class="pg-doc-footer">
   <span class="pg-footer-logo">PRESS<span class="accent">GRID</span></span>
-  <span>Documentation &nbsp;·&nbsp; v2.0.0 &nbsp;·&nbsp; GPL-2.0-or-later</span>
+  <span>Documentation &nbsp;·&nbsp; v2.5.0 &nbsp;·&nbsp; GPL-2.0-or-later</span>
   <span>By <a href="https://stanchev.bg/" target="_blank" rel="noopener">Milen Stanchev</a> &nbsp;·&nbsp; <a href="https://github.com/stantchev/PressGrid-WordPress-Theme" target="_blank" rel="noopener">GitHub ↗</a></span>
 </footer>
 
@@ -1497,18 +1882,22 @@ td code{font-size:.78em}
   var toggle  = document.getElementById('pgNavToggle');
   var sidebar = document.getElementById('pgSidebar');
   var overlay = document.getElementById('pgOverlay');
+
   function openSidebar(){
+    if(!sidebar||!overlay||!toggle) return;
     sidebar.classList.add('open');
     overlay.classList.add('open');
     toggle.setAttribute('aria-expanded','true');
     document.body.style.overflow='hidden';
   }
   function closeSidebar(){
+    if(!sidebar||!overlay||!toggle) return;
     sidebar.classList.remove('open');
     overlay.classList.remove('open');
     toggle.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
   }
+
   toggle  && toggle.addEventListener('click', function(){
     sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
   });
@@ -1526,20 +1915,24 @@ td code{font-size:.78em}
     });
   }
 
+  /* ── Close when resizing to desktop ── */
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860) closeSidebar();
+  }, {passive:true});
+
   /* ── Active nav highlighting via IntersectionObserver ── */
-  var sections = document.querySelectorAll('.pg-section[id], .pg-doc-hero[id]');
+  var sections  = document.querySelectorAll('.pg-section[id], .pg-doc-hero[id]');
   var sideLinks = document.querySelectorAll('.pg-sib-links a');
   var topLinks  = document.querySelectorAll('.pg-nav-links a');
 
   function setActive(id){
     var all = Array.from(sideLinks).concat(Array.from(topLinks));
     all.forEach(function(a){
-      var matches = a.getAttribute('href') === '#' + id;
-      a.classList.toggle('active', matches);
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
     });
   }
 
-  if('IntersectionObserver' in window){
+  if('IntersectionObserver' in window && sections.length){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting) setActive(e.target.id);
